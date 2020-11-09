@@ -66,7 +66,7 @@ private:
 public:
 	Division(Project *_project);
 	Division(Project *_project, MidiData &src, const DivisionSetting &setting);
-	void init(){
+	void init() override {
 		//MidiData::init();
 		name.clear();
 		src2def.clear();

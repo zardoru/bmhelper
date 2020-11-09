@@ -57,7 +57,7 @@ public:
 	size_t CreateDivision(const DivisionSetting &setting);
 	void EraseDivision(size_t i);
 	size_t GetDivisionsCount() const{ return divisions.size(); }
-	Division &GetDivision(size_t i){ return *divisions[i]; }
+	Division &GetDivision(size_t i){ return divisions[i]; }
 
 };
 

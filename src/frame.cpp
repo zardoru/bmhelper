@@ -24,7 +24,7 @@ enum {
 };
 
 
-BEGIN_EVENT_TABLE(FrameWindow, wxFrame)
+wxBEGIN_EVENT_TABLE(FrameWindow, wxFrame)
 	EVT_MENU(ID_New, FrameWindow::OnNewProject)
 	EVT_MENU(ID_Open, FrameWindow::OnOpenProject)
 	EVT_MENU(ID_Save, FrameWindow::OnSaveProject)
@@ -36,7 +36,7 @@ BEGIN_EVENT_TABLE(FrameWindow, wxFrame)
 	EVT_CLOSE(FrameWindow::OnClose)
 	EVT_DROP_FILES(FrameWindow::OnDropFiles)
 	EVT_SIZE(FrameWindow::OnSize)
-END_EVENT_TABLE()
+wxEND_EVENT_TABLE()
 
 
 
@@ -248,7 +248,7 @@ void FrameWindow::OnHelp(wxCommandEvent &WXUNUSED(event)){
 }
 
 void FrameWindow::OnAbout(wxCommandEvent &WXUNUSED(event)){
-	auto text = wxString::Format("%s (%s)\n by exclusion (forked by zardoru)", app_name, app_version);
+	auto text = wxString::Format("%s (%s)\n by exclusion\n forked by zardoru", app_name, app_version);
 	wxMessageBox(text, app_name, wxOK | wxICON_INFORMATION, this);
 }
 

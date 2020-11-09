@@ -280,8 +280,8 @@ void Division::def_transpose_up() {
             definition.zz--;
         }
     } else {
-        for (size_t i = 0; i < definitions.size(); i++) {
-            definitions[i].zz.decrement_in_ff();
+        for (auto & definition : definitions) {
+            definition.zz.decrement_in_ff();
         }
     }
 }

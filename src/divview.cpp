@@ -256,10 +256,10 @@ public:
 };
 
 
-BEGIN_EVENT_TABLE(DivisionSettingDialog, wxDialog)
+wxBEGIN_EVENT_TABLE(DivisionSettingDialog, wxDialog)
 	EVT_CHECKBOX(DivisionSettingDialog::ID_ScpyCheck, DivisionSettingDialog::OnScpyCheck)
 	EVT_COMMAND(wxID_OK, wxEVT_COMMAND_BUTTON_CLICKED, DivisionSettingDialog::OnOK)
-END_EVENT_TABLE()
+wxEND_EVENT_TABLE()
 
 
 

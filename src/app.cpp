@@ -2,7 +2,7 @@
 #include "app.h"
 
 const char* app_name = "Be-Music Helper";
-const char* app_version = "beta 4";
+const char* app_version = "beta 5 (wyrmin)";
 
 bool Application::OnInit(){
 

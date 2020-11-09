@@ -24,16 +24,17 @@ public:
 private:
 	int quantize;
 
-	MidiNotesLane note_events;	// ƒm[ƒg
-	MidiParamsLane pb_events;	// ƒsƒbƒ`ƒxƒ“ƒh
-	MidiCCLanesMap cc_lanes;	// ƒRƒ“ƒgƒ[ƒ‹ƒ`ƒFƒ“ƒW
+	MidiNotesLane note_events;	// ï¿½mï¿½[ï¿½g
+	MidiParamsLane pb_events;	// ï¿½sï¿½bï¿½`ï¿½xï¿½ï¿½ï¿½h
+	MidiCCLanesMap cc_lanes;	// ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½`ï¿½Fï¿½ï¿½ï¿½W
 
 
 public:
 
 	MidiData(int _quantize=480) : quantize(_quantize){}
 	~MidiData(){}
-	void init(){
+
+    virtual void init(){
 		quantize = 480;
 		note_events.clear();
 		pb_events.clear();
