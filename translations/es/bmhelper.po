@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bmhelper\n"
-"POT-Creation-Date: 2020-11-09 00:25-0300\n"
-"PO-Revision-Date: 2020-11-09 01:02-0300\n"
+"POT-Creation-Date: 2020-11-09 17:07-0300\n"
+"PO-Revision-Date: 2020-11-09 17:08-0300\n"
 "Last-Translator: \n"
 "Language-Team: zardoru\n"
 "Language: es_CL\n"
@@ -13,23 +13,26 @@ msgstr ""
 "X-Poedit-Basepath: src\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: _\n"
-"X-Poedit-SearchPath-0: app.cpp\n"
-"X-Poedit-SearchPath-1: defview.cpp\n"
-"X-Poedit-SearchPath-2: divedit.cpp\n"
-"X-Poedit-SearchPath-3: division.cpp\n"
-"X-Poedit-SearchPath-4: divview.cpp\n"
-"X-Poedit-SearchPath-5: frame.cpp\n"
-"X-Poedit-SearchPath-6: mdview.cpp\n"
-"X-Poedit-SearchPath-7: midi_smfin.cpp\n"
-"X-Poedit-SearchPath-8: midi_smfout.cpp\n"
-"X-Poedit-SearchPath-9: midi_sr.cpp\n"
-"X-Poedit-SearchPath-10: project.cpp\n"
-"X-Poedit-SearchPath-11: smf_accs.cpp\n"
-"X-Poedit-SearchPath-12: smf_data.cpp\n"
-"X-Poedit-SearchPath-13: smf_event.cpp\n"
-"X-Poedit-SearchPath-14: srcview.cpp\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: defview.cpp:47 divview.cpp:209
+#: app.cpp:21
+msgid "Please choose language:"
+msgstr ""
+
+#: app.cpp:22
+msgid "Language"
+msgstr ""
+
+#: app.cpp:42
+#, c-format
+msgid "Couldn't find/load the 'bmhelper' catalog for locale '%s'."
+msgstr ""
+
+#: app.cpp:43
+msgid "unknown"
+msgstr ""
+
+#: defview.cpp:47
 #, c-format
 msgid "%d"
 msgstr ""
@@ -66,7 +69,7 @@ msgstr "Trasponer a..."
 msgid "MIDI files"
 msgstr "Archivos MIDI"
 
-#: divedit.cpp:109 frame.cpp:156 project.cpp:16
+#: divedit.cpp:109 frame.cpp:160 project.cpp:14
 msgid "mid"
 msgstr ""
 
@@ -82,7 +85,7 @@ msgstr "Portapapeles no disponible."
 msgid "WAV definitions"
 msgstr "Definiciones de WAV"
 
-#: divedit.cpp:172 divview.cpp:218 midi_smfin.cpp:79
+#: divedit.cpp:172 divview.cpp:222 midi_smfin.cpp:84
 msgid "OK"
 msgstr ""
 
@@ -111,329 +114,359 @@ msgstr "Copiar al portapapeles (&C)"
 msgid "Close (&W)"
 msgstr "Cerrar (&W)"
 
-#: division.cpp:315 division.cpp:324
+#: divedit.cpp:305
+#, c-format
+msgid "Rename '%s' to"
+msgstr ""
+
+#: divedit.cpp:306
+msgid "Rename division"
+msgstr "Renombrar división"
+
+#: division.cpp:330 division.cpp:339
 msgid "BMSE ClipBoard Object Data Format\r\n"
 msgstr ""
 
-#: division.cpp:317
+#: division.cpp:332
 #, c-format
 msgid "011%08d1\r\n"
 msgstr ""
 
-#: division.cpp:336
+#: division.cpp:351
 #, c-format
 msgid "1%02d%08d%d\r\n"
 msgstr ""
 
-#: divview.cpp:28
+#: divview.cpp:30
 msgid "New division..."
 msgstr "Nueva división..."
 
-#: divview.cpp:91
+#: divview.cpp:93
 #, c-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Está seguro que quiere borrar %s?"
 
-#: divview.cpp:184
+#: divview.cpp:188
 msgid "Division settings"
 msgstr "Ajustes de división"
 
-#: divview.cpp:187
+#: divview.cpp:191
 msgid "None"
 msgstr "Ninguno"
 
-#: divview.cpp:188
+#: divview.cpp:192
 msgid "nn/gate/vel"
 msgstr ""
 
-#: divview.cpp:189
+#: divview.cpp:193
 msgid "nn/vel/gate"
 msgstr ""
 
-#: divview.cpp:190
+#: divview.cpp:194
 msgid "gate/nn/vel"
 msgstr ""
 
-#: divview.cpp:191
+#: divview.cpp:195
 msgid "gate/vel/nn"
 msgstr ""
 
-#: divview.cpp:192
+#: divview.cpp:196
 msgid "vel/nn/gate"
 msgstr ""
 
-#: divview.cpp:193
+#: divview.cpp:197
 msgid "vel/gate/nn"
 msgstr ""
 
-#: divview.cpp:195
+#: divview.cpp:199
 msgid "Name (&N):"
 msgstr "Nombre (&N)"
 
-#: divview.cpp:197
+#: divview.cpp:201
 msgid "MIDI settings"
 msgstr "Opciones del MIDI"
 
-#: divview.cpp:198
+#: divview.cpp:202
 msgid "Leave MIDI unaltered (&C)"
 msgstr "No alterar MIDI"
 
-#: divview.cpp:199
+#: divview.cpp:203
 msgid "Leading silence (&H):"
 msgstr "Silencio al inicio:"
 
-#: divview.cpp:200 divview.cpp:202 divview.cpp:207 divview.cpp:217
+#: divview.cpp:204 divview.cpp:206 divview.cpp:211 divview.cpp:221
 #, c-format
 msgid "%f"
 msgstr ""
 
-#: divview.cpp:201
+#: divview.cpp:205
 msgid "Min. interval gap (&I):"
 msgstr "Distancia de tiempo mínima:"
 
-#: divview.cpp:203
+#: divview.cpp:207
 msgid "Sorting method (&S):"
 msgstr "Método de ordenamiento:"
 
-#: divview.cpp:205
+#: divview.cpp:209
 msgid "Minimum difference in:"
 msgstr "Diferencias minimas en:"
 
-#: divview.cpp:206
-msgid " Length (&G):"
-msgstr "Duración:"
-
-#: divview.cpp:208
-msgid " Velocity (&V):"
-msgstr "Velocity:"
-
 #: divview.cpp:210
+msgid " Length (&G):"
+msgstr " Duración (&G):"
+
+#: divview.cpp:212
+msgid " Velocity (&V):"
+msgstr " Velocity (&V):"
+
+#: divview.cpp:213
+#, c-format
+msgid "%zu"
+msgstr ""
+
+#: divview.cpp:214
 msgid "Definition settings"
 msgstr "Opciones de definición"
 
-#: divview.cpp:212
+#: divview.cpp:216
 msgid "Use base-36 range(00-ZZ) (&Z)"
 msgstr "Usar rango de base-36 (&Z)"
 
-#: divview.cpp:213
+#: divview.cpp:217
 msgid "Use overloading (&M)"
 msgstr "Usar sobrecarga (&M)"
 
-#: divview.cpp:214
+#: divview.cpp:218
 msgid "Starting BMS Index (&D):"
 msgstr "Indice de inicio del BMS (&D)"
 
-#: divview.cpp:216
+#: divview.cpp:220
 msgid "Overloading Interval (&L):"
 msgstr "Intervalo de sobrecarga (&L)"
 
-#: divview.cpp:219
+#: divview.cpp:223
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: divview.cpp:270
+#: divview.cpp:274
 #, c-format
-msgid "division %d"
+msgid "division %zu"
+msgstr "division %zu"
+
+#: divview.h:34
+msgid "DivisionsEditor"
 msgstr ""
 
-#: frame.cpp:47
+#: divview.h:73
+msgid "DivisionsView"
+msgstr ""
+
+#: frame.cpp:48
 msgid "New project (&N)...\tCtrl+N"
 msgstr "Nuevo proyecto (&N)...\tCtrl+N"
 
-#: frame.cpp:48
+#: frame.cpp:49
 msgid "Open project (&O)...\tCtrl+O"
 msgstr "Abrir proyecto (&O)...\tCtrl+O"
 
-#: frame.cpp:49
+#: frame.cpp:50
 msgid "Save project (&S)\tCtrl+S"
 msgstr "Guardar proyecto (&S)\tCtrl+S"
 
-#: frame.cpp:50
+#: frame.cpp:51
 msgid "Save project as (&A)...\tCtrl+Shift+S"
 msgstr "Guardar proyecto como (&A)...\tCtrl+Shift+S"
 
-#: frame.cpp:51
+#: frame.cpp:52
 msgid "Close project (&C)"
 msgstr "Cerrar proyecto (&C)"
 
-#: frame.cpp:52
+#: frame.cpp:53
 msgid "Quit (&X)\tCtrl+Q"
 msgstr "Salir (&X)\tCtrl+Q"
 
-#: frame.cpp:53
+#: frame.cpp:54
 msgid "New division (&N)...\tF5"
 msgstr "Nueva división (&N)...\tF5"
 
-#: frame.cpp:54
+#: frame.cpp:55
+msgid "Rename division (&R)...\tF2"
+msgstr "Renombrar división (&N)...\tF2"
+
+#: frame.cpp:56
 msgid "Delete division (&D)"
 msgstr "Borrar división (&D)"
 
-#: frame.cpp:55
+#: frame.cpp:57
 msgid "Write modified MIDI File (&M)..."
 msgstr "Escribir MIDI modificado (&M)..."
 
-#: frame.cpp:56
+#: frame.cpp:58
 msgid "Copy division (&W)"
 msgstr "Copiar division (&W)"
 
-#: frame.cpp:57
+#: frame.cpp:59
 msgid "Definition information (&D)..."
 msgstr "Información de definición (&D)..."
 
-#: frame.cpp:58
+#: frame.cpp:60
 msgid "Copy BMS sequence to clipboard (&S)"
 msgstr "Copiar secuencia BMS al portapapeles (&S)"
 
-#: frame.cpp:59
+#: frame.cpp:61
 msgid "Help (&H)...\tF1"
 msgstr "Ayuda (&H)...\tF1"
 
-#: frame.cpp:60
+#: frame.cpp:62
 msgid "About (&I)..."
 msgstr "Acerca de (&I)..."
 
-#: frame.cpp:86
+#: frame.cpp:88
 msgid "File (&F)"
 msgstr "Archivo (&F)"
 
-#: frame.cpp:94
+#: frame.cpp:97
 msgid "Divisions (&D)"
 msgstr "Divisiones (&D)"
 
-#: frame.cpp:97
+#: frame.cpp:100
 msgid "Help (&H)"
 msgstr "Ayuda (&H)"
 
-#: frame.cpp:132 frame.cpp:230
+#: frame.cpp:136 frame.cpp:234
 msgid "Couldn't open file:\r\n"
 msgstr "No se pudo abrir archivo:\n"
 
-#: frame.cpp:153
+#: frame.cpp:157
 msgid "Please select source MIDI file"
 msgstr "Por favor seleccione archivo MIDI fuente"
 
-#: frame.cpp:166 frame.cpp:179
+#: frame.cpp:170 frame.cpp:183
 msgid "Couldn't open file"
 msgstr "No se pudo abrir archivo"
 
-#: frame.cpp:174
+#: frame.cpp:178
 msgid "Open project file"
 msgstr "Abrir archivo de proyecto"
 
-#: frame.cpp:259
+#: frame.cpp:263
 msgid "Save project as"
 msgstr "Guardar proyecto como"
 
-#: frame.cpp:267
+#: frame.cpp:271
 msgid "The project has been modified. Do you want to save?"
 msgstr "El proyecto ha sido modificado. ¿Deseas guardar?"
 
-#: frame.cpp:283
+#: frame.cpp:287
 #, c-format
-msgid "source: %dn"
-msgstr "fuente: %dn"
+msgid "source: %zun"
+msgstr "fuente: %zun"
 
-#: frame.cpp:311
+#: frame.cpp:315
 msgid "* - "
 msgstr ""
 
-#: frame.cpp:312
+#: frame.cpp:316
 msgid " - "
 msgstr ""
 
-#: frame.cpp:313
+#: frame.cpp:317
 msgid "New project* - "
 msgstr "Nuevo proyecto* - "
 
-#: frame.cpp:326
+#: frame.cpp:330
 #, c-format
-msgid "%s: %dn/%dd"
+msgid "%s: %zun/%zud"
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "C "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "C#"
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "D "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "D#"
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "E "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "F "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "F#"
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "G "
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "G#"
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "A "
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "A#"
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "B "
 msgstr ""
 
-#: mdview.cpp:267
+#: mdview.cpp:262
 #, c-format
 msgid "%s %d"
 msgstr ""
 
-#: mdview.cpp:278
+#: mdview.cpp:273
 #, c-format
 msgid "Note#%d ( %s ) gate:%d/%d vel:%d"
 msgstr ""
 
-#: midi_smfin.cpp:52
+#: midi_smfin.cpp:58
 msgid "MIDI file import settings"
 msgstr "Ajustes de importación de MIDI"
 
-#: midi_smfin.cpp:65
+#: midi_smfin.cpp:70
 #, c-format
 msgid "%04X: %s"
 msgstr ""
 
-#: midi_smfin.cpp:67
+#: midi_smfin.cpp:73
 msgid "Tracks (&T):"
 msgstr "Tracks (Pistas) (&T):"
 
-#: midi_smfin.cpp:72
+#: midi_smfin.cpp:77
 msgid "Channels (&C):"
 msgstr "Channels (Canales) (&C):"
 
-#: midi_smfin.cpp:75
+#: midi_smfin.cpp:80
 #, c-format
 msgid "%02X"
 msgstr ""
 
-#: project.cpp:16
+#: project.cpp:14
 msgid "midi"
 msgstr ""
 
-#: project.cpp:16
+#: project.cpp:14
 msgid "smf"
+msgstr ""
+
+#: srcview.h:25
+msgid "SourceView"
 msgstr ""

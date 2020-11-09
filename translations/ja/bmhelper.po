@@ -1,0 +1,472 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bmhelper\n"
+"POT-Creation-Date: 2020-11-09 17:07-0300\n"
+"PO-Revision-Date: 2020-11-09 17:50-0300\n"
+"Last-Translator: \n"
+"Language-Team: exclusion\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: src\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: app.cpp:21
+msgid "Please choose language:"
+msgstr ""
+
+#: app.cpp:22
+msgid "Language"
+msgstr ""
+
+#: app.cpp:42
+#, c-format
+msgid "Couldn't find/load the 'bmhelper' catalog for locale '%s'."
+msgstr ""
+
+#: app.cpp:43
+msgid "unknown"
+msgstr ""
+
+#: defview.cpp:47
+#, c-format
+msgid "%d"
+msgstr ""
+
+#: divedit.cpp:35
+msgid "Write MIDI File"
+msgstr "MIDIファイル出力"
+
+#: divedit.cpp:36
+msgid "Copy woslicer II Cutting Positions"
+msgstr "切断位置をコピー"
+
+#: divedit.cpp:37
+msgid "Open BMS WAV definitions..."
+msgstr "定義情報..."
+
+#: divedit.cpp:38
+msgid "Copy BMS Data to Clipboard"
+msgstr "BMSシーケンスをコピー"
+
+#: divedit.cpp:39
+msgid "<"
+msgstr ""
+
+#: divedit.cpp:40
+msgid ">"
+msgstr ""
+
+#: divedit.cpp:41
+msgid "Transpose to..."
+msgstr "始番号.."
+
+#: divedit.cpp:106
+msgid "MIDI files"
+msgstr "MIDIファイル出力"
+
+#: divedit.cpp:109 frame.cpp:160 project.cpp:14
+msgid "mid"
+msgstr ""
+
+#: divedit.cpp:118
+msgid "Failed to export MIDI file."
+msgstr "MIDIファイルの書き出しに失敗しました。"
+
+#: divedit.cpp:129 divedit.cpp:140 divedit.cpp:280
+msgid "Clipboard is not available."
+msgstr "クリップボードを利用できません."
+
+#: divedit.cpp:170
+msgid "WAV definitions"
+msgstr "WAV定義情報"
+
+#: divedit.cpp:172 divview.cpp:222 midi_smfin.cpp:84
+msgid "OK"
+msgstr ""
+
+#: divedit.cpp:252
+#, c-format
+msgid "#WAV%s %s_%03d.wav\r\n"
+msgstr ""
+
+#: divedit.cpp:259 divedit.cpp:270
+msgid "untitled"
+msgstr ""
+
+#: divedit.cpp:260
+msgid "BMS WAV definitions"
+msgstr "WAV定義情報"
+
+#: divedit.cpp:261
+msgid "Filename (&F):"
+msgstr "ファイル名(&F):"
+
+#: divedit.cpp:264
+msgid "Copy to clipboard (&C)"
+msgstr "クリップボードにコピー(&C"
+
+#: divedit.cpp:265
+msgid "Close (&W)"
+msgstr "閉じる(&W)"
+
+#: divedit.cpp:305
+#, c-format
+msgid "Rename '%s' to"
+msgstr ""
+
+#: divedit.cpp:306
+msgid "Rename division"
+msgstr ""
+
+#: division.cpp:330 division.cpp:339
+msgid "BMSE ClipBoard Object Data Format\r\n"
+msgstr ""
+
+#: division.cpp:332
+#, c-format
+msgid "011%08d1\r\n"
+msgstr ""
+
+#: division.cpp:351
+#, c-format
+msgid "1%02d%08d%d\r\n"
+msgstr ""
+
+#: divview.cpp:30
+msgid "New division..."
+msgstr "新規分割..."
+
+#: divview.cpp:93
+#, c-format
+msgid "Are you sure you want to delete %s?"
+msgstr "%sを削除してもよろしいですか?"
+
+#: divview.cpp:188
+msgid "Division settings"
+msgstr "分割設定"
+
+#: divview.cpp:191
+msgid "None"
+msgstr "なし"
+
+#: divview.cpp:192
+msgid "nn/gate/vel"
+msgstr ""
+
+#: divview.cpp:193
+msgid "nn/vel/gate"
+msgstr ""
+
+#: divview.cpp:194
+msgid "gate/nn/vel"
+msgstr ""
+
+#: divview.cpp:195
+msgid "gate/vel/nn"
+msgstr ""
+
+#: divview.cpp:196
+msgid "vel/nn/gate"
+msgstr ""
+
+#: divview.cpp:197
+msgid "vel/gate/nn"
+msgstr ""
+
+#: divview.cpp:199
+msgid "Name (&N):"
+msgstr "分割名(&N):"
+
+#: divview.cpp:201
+msgid "MIDI settings"
+msgstr "MIDI設定"
+
+#: divview.cpp:202
+msgid "Leave MIDI unaltered (&C)"
+msgstr "元のシーケンスをそのまま使用する(&C)"
+
+#: divview.cpp:203
+msgid "Leading silence (&H):"
+msgstr "頭の余白(&H):"
+
+#: divview.cpp:204 divview.cpp:206 divview.cpp:211 divview.cpp:221
+#, c-format
+msgid "%f"
+msgstr ""
+
+#: divview.cpp:205
+msgid "Min. interval gap (&I):"
+msgstr "最小間隔(&I):"
+
+#: divview.cpp:207
+msgid "Sorting method (&S):"
+msgstr "ソート(&S):"
+
+#: divview.cpp:209
+msgid "Minimum difference in:"
+msgstr "値の差が下記以下のノートを同一視する:"
+
+#: divview.cpp:210
+msgid " Length (&G):"
+msgstr " - 長さ(&G):"
+
+#: divview.cpp:212
+msgid " Velocity (&V):"
+msgstr " - ベロシティ(&V):"
+
+#: divview.cpp:213
+#, c-format
+msgid "%zu"
+msgstr ""
+
+#: divview.cpp:214
+msgid "Definition settings"
+msgstr "定義設定"
+
+#: divview.cpp:216
+msgid "Use base-36 range(00-ZZ) (&Z)"
+msgstr "ZZ定義を有効にする(&Z)"
+
+#: divview.cpp:217
+msgid "Use overloading (&M)"
+msgstr "多重定義を使用する(&M)"
+
+#: divview.cpp:218
+msgid "Starting BMS Index (&D):"
+msgstr "定義の開始番号(&D):"
+
+#: divview.cpp:220
+msgid "Overloading Interval (&L):"
+msgstr "多重定義の間隔(&L):"
+
+#: divview.cpp:223
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: divview.cpp:274
+#, c-format
+msgid "division %zu"
+msgstr ""
+
+#: divview.h:34
+msgid "DivisionsEditor"
+msgstr ""
+
+#: divview.h:73
+msgid "DivisionsView"
+msgstr ""
+
+#: frame.cpp:48
+msgid "New project (&N)...\tCtrl+N"
+msgstr "新規プロジェクト(&N)...\tCtrl+N"
+
+#: frame.cpp:49
+msgid "Open project (&O)...\tCtrl+O"
+msgstr "プロジェクトを開く(&O)...\tCtrl+O"
+
+#: frame.cpp:50
+msgid "Save project (&S)\tCtrl+S"
+msgstr "プロジェクトを保存(&S)\tCtrl+S"
+
+#: frame.cpp:51
+msgid "Save project as (&A)...\tCtrl+Shift+S"
+msgstr "名前を付けてプロジェクトを保存(&A)...\tCtrl+Shift+S"
+
+#: frame.cpp:52
+msgid "Close project (&C)"
+msgstr "プロジェクトを閉じる(&C)"
+
+#: frame.cpp:53
+msgid "Quit (&X)\tCtrl+Q"
+msgstr "終了(&X)\tCtrl+Q"
+
+#: frame.cpp:54
+msgid "New division (&N)...\tF5"
+msgstr "新規分割(&N)...\tF5"
+
+#: frame.cpp:55
+msgid "Rename division (&R)...\tF2"
+msgstr ""
+
+#: frame.cpp:56
+msgid "Delete division (&D)"
+msgstr "削除(&D)"
+
+#: frame.cpp:57
+msgid "Write modified MIDI File (&M)..."
+msgstr "MIDIファイル出力(&M).."
+
+#: frame.cpp:58
+msgid "Copy division (&W)"
+msgstr "切断位置をコピー(&W)"
+
+#: frame.cpp:59
+msgid "Definition information (&D)..."
+msgstr "定義情報(&D).."
+
+#: frame.cpp:60
+msgid "Copy BMS sequence to clipboard (&S)"
+msgstr "BMSシーケンスをコピー(&S)"
+
+#: frame.cpp:61
+msgid "Help (&H)...\tF1"
+msgstr "ヘルプ(&H)...\\tF1"
+
+#: frame.cpp:62
+msgid "About (&I)..."
+msgstr "情報(&I)..."
+
+#: frame.cpp:88
+msgid "File (&F)"
+msgstr "ファイル(&F)"
+
+#: frame.cpp:97
+msgid "Divisions (&D)"
+msgstr "分割(&D)"
+
+#: frame.cpp:100
+msgid "Help (&H)"
+msgstr "ヘルプ(&H)"
+
+#: frame.cpp:136 frame.cpp:234
+msgid "Couldn't open file:\r\n"
+msgstr "ファイルを開けません:\n"
+
+#: frame.cpp:157
+msgid "Please select source MIDI file"
+msgstr "元となるMIDIファイルを選択してください"
+
+#: frame.cpp:170 frame.cpp:183
+msgid "Couldn't open file"
+msgstr "ファイルを開けません。"
+
+#: frame.cpp:178
+msgid "Open project file"
+msgstr "プロジェクトファイルを開く"
+
+#: frame.cpp:263
+msgid "Save project as"
+msgstr "プロジェクトを名前を付けて保存"
+
+#: frame.cpp:271
+msgid "The project has been modified. Do you want to save?"
+msgstr "プロジェクトは変更されています。保存しますか?"
+
+#: frame.cpp:287
+#, c-format
+msgid "source: %zun"
+msgstr ""
+
+#: frame.cpp:315
+msgid "* - "
+msgstr ""
+
+#: frame.cpp:316
+msgid " - "
+msgstr ""
+
+#: frame.cpp:317
+msgid "New project* - "
+msgstr "新規プロジェクト* - "
+
+#: frame.cpp:330
+#, c-format
+msgid "%s: %zun/%zud"
+msgstr ""
+
+#: mdview.cpp:259
+msgid "C "
+msgstr ""
+
+#: mdview.cpp:259
+msgid "C#"
+msgstr ""
+
+#: mdview.cpp:259
+msgid "D "
+msgstr ""
+
+#: mdview.cpp:259
+msgid "D#"
+msgstr ""
+
+#: mdview.cpp:259
+msgid "E "
+msgstr ""
+
+#: mdview.cpp:259
+msgid "F "
+msgstr ""
+
+#: mdview.cpp:259
+msgid "F#"
+msgstr ""
+
+#: mdview.cpp:260
+msgid "G "
+msgstr ""
+
+#: mdview.cpp:260
+msgid "G#"
+msgstr ""
+
+#: mdview.cpp:260
+msgid "A "
+msgstr ""
+
+#: mdview.cpp:260
+msgid "A#"
+msgstr ""
+
+#: mdview.cpp:260
+msgid "B "
+msgstr ""
+
+#: mdview.cpp:262
+#, c-format
+msgid "%s %d"
+msgstr ""
+
+#: mdview.cpp:273
+#, c-format
+msgid "Note#%d ( %s ) gate:%d/%d vel:%d"
+msgstr ""
+
+#: midi_smfin.cpp:58
+msgid "MIDI file import settings"
+msgstr "SMF読み込み設定"
+
+#: midi_smfin.cpp:70
+#, c-format
+msgid "%04X: %s"
+msgstr ""
+
+#: midi_smfin.cpp:73
+msgid "Tracks (&T):"
+msgstr "トラック(&T):"
+
+#: midi_smfin.cpp:77
+msgid "Channels (&C):"
+msgstr "\"チャンネル(&C):"
+
+#: midi_smfin.cpp:80
+#, c-format
+msgid "%02X"
+msgstr ""
+
+#: project.cpp:14
+msgid "midi"
+msgstr ""
+
+#: project.cpp:14
+msgid "smf"
+msgstr ""
+
+#: srcview.h:25
+msgid "SourceView"
+msgstr ""

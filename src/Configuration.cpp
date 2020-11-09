@@ -5,6 +5,7 @@ int Languages[] = {
         static_cast<int>(SupportedLanguages::DEFAULT),
         static_cast<int>(SupportedLanguages::ENGLISH),
         static_cast<int>(SupportedLanguages::SPANISH),
+        static_cast<int>(SupportedLanguages::NORWEGIAN),
         static_cast<int>(SupportedLanguages::JAPANESE),
 };
 
@@ -12,6 +13,7 @@ wxString LangNames[] = {
         "System",
         "English",
         wxString::FromUTF8("Español"),
+        wxString::FromUTF8("Norsk (Bokmål)"),
         wxString::FromUTF8("日本語")
 };
 

@@ -108,6 +108,7 @@ void DivisionsView::DivisionChanged(){
 	if (selection == wxNOT_FOUND){
 		editor->SetDivision(0);
 		frame->UpdateDivision(0);
+		frame->m_div_rename->Enable(false);
 		frame->m_div_delete->Enable(false);
 		frame->m_div_smfout->Enable(false);
 		frame->m_div_divcopy->Enable(false);
@@ -118,6 +119,7 @@ void DivisionsView::DivisionChanged(){
 	    divisions->SetString(selection, div.get_name());
 		editor->SetDivision(&div);
 		frame->UpdateDivision(&div);
+        frame->m_div_rename->Enable(true);
 		frame->m_div_delete->Enable(true);
 		frame->m_div_smfout->Enable(true);
 		frame->m_div_divcopy->Enable(true);

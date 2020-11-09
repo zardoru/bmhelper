@@ -34,7 +34,7 @@ bool Application::OnInit(){
         wxLogWarning("unsupported language...");
     }
 
-    wxLocale::AddCatalogLookupPathPrefix(".");
+    wxLocale::AddCatalogLookupPathPrefix("i18n");
 
     const wxLanguageInfo* pInfo = wxLocale::GetLanguageInfo(lang);
     if (!m_locale.AddCatalog("bmhelper"))

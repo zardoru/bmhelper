@@ -45,3 +45,10 @@ if(wxWidgets_FOUND)
     # and for each of your dependent executable/library targets:
     target_link_libraries(bmhelper ${wxWidgets_LIBRARIES})
 endif()
+
+install(TARGETS bmhelper
+          DESTINATION .)
+
+install (DIRECTORY translations
+         DESTINATION i18n
+         FILES_MATCHING PATTERN "*.mo")

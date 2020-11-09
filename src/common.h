@@ -11,10 +11,11 @@ extern const char* project_file_filter;
 
 enum class SupportedLanguages {
     DEFAULT = wxLANGUAGE_DEFAULT,
-    ENGLISH = wxLANGUAGE_ENGLISH,
-    SPANISH = wxLANGUAGE_SPANISH,
-    JAPANESE = wxLANGUAGE_JAPANESE,
-    LANG_COUNT = 4 /* update LangNames & Languages @ Configuration.cpp if this changes */
+    ENGLISH = wxLANGUAGE_ENGLISH, // en_GB
+    SPANISH = wxLANGUAGE_SPANISH, // es_ES
+    NORWEGIAN = wxLANGUAGE_NORWEGIAN_BOKMAL, // nb_NO
+    JAPANESE = wxLANGUAGE_JAPANESE, // ja_JP
+    LANG_COUNT = 5 /* update LangNames & Languages @ Configuration.cpp if this changes */
 };
 
 extern int Languages[];
