@@ -23,8 +23,9 @@ class DivisionEditor : public wxWindow{
 	void _Size();
 	void _SmfOut();
 	void _DivCopy();
-	void _DefOut();
+	void DefOut();
 	void _SeqCopy();
+	bool DivRename();
 
 public:
 	DivisionEditor(FrameWindow *_frame, wxWindow* parent, wxWindowID id,
@@ -38,11 +39,12 @@ public:
 	void OnSize(wxSizeEvent &event);
 	void OnSmfOut(wxCommandEvent &event){ _SmfOut(); }
 	void OnDivCopy(wxCommandEvent &event){ _DivCopy(); }
-	void OnDefOut(wxCommandEvent &event){ _DefOut(); }
+	void OnDefOut(wxCommandEvent &event){ DefOut(); }
 	void OnSeqCopy(wxCommandEvent &event){ _SeqCopy(); }
 	void OnSmfOut(wxMenuEvent &event){ _SmfOut(); }
 	void OnDivCopy(wxMenuEvent &event){ _DivCopy(); }
-	void OnDefOut(wxMenuEvent &event){ _DefOut(); }
+	void OnDefOut(wxMenuEvent &event){ DefOut(); }
+    bool OnDivRename(wxMenuEvent &event) { return DivRename(); }
 	void OnSeqCopy(wxMenuEvent &event){ _SeqCopy(); }
 	void OnSetStatusText(wxCommandEvent &event);
 	void OnDefTransposeUp(wxCommandEvent &event);
@@ -75,6 +77,7 @@ public:
 	void OnNewDivision(wxCommandEvent &event);
 	void OnNewDivision(wxMenuEvent &event);
 	void OnDeleteDivision(wxMenuEvent &event);
+    void OnDivRename(wxMenuEvent &event);
 	void OnSelectDivision(wxCommandEvent &event);
 	void ProjectChanged();
 	void DivisionChanged();

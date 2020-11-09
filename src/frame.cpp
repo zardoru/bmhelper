@@ -19,6 +19,7 @@ enum {
 	ID_DivDivCopy	= 0x0204,
 	ID_DivDefOut	= 0x0205,
 	ID_DivSeqCopy	= 0x0206,
+	ID_DivRename    = 0x0207,
 	ID_Help		= 0x0901,
 	ID_About	= 0x0903
 };
@@ -51,6 +52,7 @@ m_file_save_as(new wxMenuItem(m_file, ID_SaveAs, _("Save project as (&A)...\tCtr
 m_file_close(new wxMenuItem(m_file, ID_Close, _("Close project (&C)"))),
 m_file_quit(new wxMenuItem(m_file, ID_Quit, _("Quit (&X)\tCtrl+Q"))),
 m_div_new(new wxMenuItem(m_div, ID_DivNew, _("New division (&N)...\tF5"))),
+m_div_rename(new wxMenuItem(m_div, ID_DivRename, _("Rename division (&R)...\tF2"))),
 m_div_delete(new wxMenuItem(m_div, ID_DivDelete, _("Delete division (&D)"))),
 m_div_smfout(new wxMenuItem(m_div, ID_DivSmfOut, _("Write modified MIDI File (&M)..."))),
 m_div_divcopy(new wxMenuItem(m_div, ID_DivDivCopy, _("Copy division (&W)"))),
@@ -85,6 +87,7 @@ project(0)
 	m_file->Append(m_file_quit);
 	menu_bar->Append(m_file, _("File (&F)"));
 	m_div->Append(m_div_new);
+	m_div->Append(m_div_rename);
 	m_div->Append(m_div_delete);
 	m_div->AppendSeparator();
 	m_div->Append(m_div_smfout);
@@ -114,6 +117,7 @@ project(0)
 	Connect(ID_DivDivCopy, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnDivCopy), 0, div->editor);
 	Connect(ID_DivDefOut, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnDefOut), 0, div->editor);
 	Connect(ID_DivSeqCopy, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnSeqCopy), 0, div->editor);
+    Connect(ID_DivRename, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionsView::OnDivRename), 0, div);
 
 	DragAcceptFiles(true);
 }

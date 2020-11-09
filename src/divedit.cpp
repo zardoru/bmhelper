@@ -202,7 +202,7 @@ END_EVENT_TABLE()
 
 void DivisionEditor::OnDefTransposeTo(wxCommandEvent &WXUNUSED(event)){
 	if (division->definitions_count()==0) return;
-	DefTransposeDialog *dialog = new DefTransposeDialog(frame, division->definition(0).zz, division->is_zz_enabled());
+	auto dialog = new DefTransposeDialog(frame, division->definition(0).zz, division->is_zz_enabled());
 	int ret = dialog->ShowModal();
 	if (ret != wxID_OK){
 		return;
@@ -284,18 +284,36 @@ public:
 	DECLARE_EVENT_TABLE()
 };
 
-BEGIN_EVENT_TABLE(DefDialog, wxDialog)
+wxBEGIN_EVENT_TABLE(DefDialog, wxDialog)
 	EVT_COMMAND(DefDialog::ID_COPY, wxEVT_COMMAND_BUTTON_CLICKED, DefDialog::OnCopy)
 	EVT_SIZE(DefDialog::OnSize)
 	EVT_TEXT(DefDialog::ID_Name, OnNameUpdate)
-END_EVENT_TABLE()
+wxEND_EVENT_TABLE()
 
-void DivisionEditor::_DefOut(){
+void DivisionEditor::DefOut(){
 	if (!division) return;
 	wxString def_name = frame->project->GetTitle();
 	DefDialog dialog (frame, division, def_name);
 	dialog.ShowModal();
 	dialog.Destroy();
+}
+
+bool DivisionEditor::DivRename() {
+    auto name = division->get_name();
+    wxTextEntryDialog d(
+            this,
+            wxString::Format(_("Rename '%s' to"), name),
+            _("Rename division"),
+            name
+    );
+
+    if (d.ShowModal() == wxID_OK) {
+        division->set_name(d.GetValue());
+        if (division->get_name() != name)
+            return true;
+    }
+
+    return false;
 }
 
 

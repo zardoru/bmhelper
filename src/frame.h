@@ -19,7 +19,7 @@ class FrameWindow : public wxFrame, public ProjectObserver{
 	wxStatusBar *status_bar;
 	wxMenu *m_file, *m_div, *m_help;
 	wxMenuItem *m_file_new, *m_file_open, *m_file_save, *m_file_save_as, *m_file_close, *m_file_quit;
-	wxMenuItem *m_div_new, *m_div_delete, *m_div_smfout, *m_div_divcopy, *m_div_defout, *m_div_seqcopy;
+	wxMenuItem *m_div_new, *m_div_delete, *m_div_smfout, *m_div_divcopy, *m_div_defout, *m_div_seqcopy, *m_div_rename;
 	wxMenuItem *m_help_help, *m_help_about;
 	wxSplitterWindow *splitter;
 	SourceView *src;

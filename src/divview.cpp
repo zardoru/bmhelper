@@ -1,6 +1,8 @@
 
 #include "srcview.h"
 #include "frame.h"
+#include "divview.h"
+
 #include <wx/dialog.h>
 
 
@@ -112,8 +114,10 @@ void DivisionsView::DivisionChanged(){
 		frame->m_div_defout->Enable(false);
 		frame->m_div_seqcopy->Enable(false);
 	}else{
-		editor->SetDivision(&frame->project->GetDivision(selection));;
-		frame->UpdateDivision(&frame->project->GetDivision(selection));
+	    auto & div = frame->project->GetDivision(selection);
+	    divisions->SetString(selection, div.get_name());
+		editor->SetDivision(&div);
+		frame->UpdateDivision(&div);
 		frame->m_div_delete->Enable(true);
 		frame->m_div_smfout->Enable(true);
 		frame->m_div_divcopy->Enable(true);
@@ -298,6 +302,13 @@ void DivisionsView::OnNewDivision(wxCommandEvent &WXUNUSED(event)){
 
 void DivisionsView::OnNewDivision(wxMenuEvent &WXUNUSED(event)){
 	_NewDivision();
+}
+
+void DivisionsView::OnDivRename(wxMenuEvent &event) {
+    if (editor->OnDivRename(event)) {
+        frame->project->SetChangeFlag();
+        DivisionChanged();
+    }
 }
 
 
