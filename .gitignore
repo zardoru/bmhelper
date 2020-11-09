@@ -1,0 +1,4 @@
+# stuff
+cmake-build-debug/*
+cmake-build-release/*
+msvc-build/*
