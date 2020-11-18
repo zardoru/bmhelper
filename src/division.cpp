@@ -329,7 +329,8 @@ static const size_t bmse_quantize = 192 / 4;
 wxString Division::get_div_sequence_data() const {
     wxString data(_("BMSE ClipBoard Object Data Format\r\n"));
     for (size_t i = 0; i < notes_count(); i++) {
-        data += wxString::Format(_("011%08d1\r\n"), notes(i).position * bmse_quantize / get_quantize());
+        auto d = notes(i).position * bmse_quantize / get_quantize();
+        data += wxString::Format(_("011%08zu1\r\n"), d);
     }
     return data;
 }

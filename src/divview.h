@@ -4,6 +4,7 @@
 #include "common.h"
 #include "gui.h"
 #include "project.h"
+#include <wx/splitter.h>
 
 class FrameWindow;
 class MidiView;
@@ -20,8 +21,9 @@ class DivisionEditor : public wxWindow{
 	wxButton *def_transpose_up, *def_transpose_down, *def_transpose_to;
 	Division *division;
 
-	void _Size();
-	void _SmfOut();
+	wxSplitterWindow* horizontal_splitter;
+
+    void _SmfOut();
 	void _DivCopy();
 	void DefOut();
 	void _SeqCopy();
@@ -62,6 +64,7 @@ class DivisionsView : public wxWindow{
 	wxButton *new_div;
 	wxListBox *divisions;
 	DivisionEditor *editor;
+	wxSplitterWindow *splitter;
 
 	void _Size();
 	void _NewDivision();

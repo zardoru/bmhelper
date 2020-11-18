@@ -21,17 +21,37 @@ BEGIN_EVENT_TABLE(DivisionsView, wxWindow)
 END_EVENT_TABLE()
 
 
+
 DivisionsView::DivisionsView(FrameWindow *_frame, wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name)
 : wxWindow(parent, id, pos, size, style, name), frame(_frame),
 new_div(0), divisions(0), editor(0)
 {
-	SetWindowStyle(wxBORDER_NONE | wxCLIP_CHILDREN);
+	SetWindowStyle(wxBORDER_SIMPLE | wxCLIP_CHILDREN);
 
-	new_div = new wxButton(this, ID_NewDivision, _("New division..."));
-	divisions = new wxListBox(this, ID_ListBox);
+	splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, size);
+
+	/* left panel */
+	auto left_panel = new wxPanel(splitter, wxID_ANY);
+	auto left_panel_sizer = new wxBoxSizer(wxVERTICAL);
+	left_panel->SetSizer(left_panel_sizer);
+	// left_panel_sizer->SetMinSize(wxSize(100, -1));
+
+	new_div = new wxButton(left_panel, ID_NewDivision, _("New division..."));
+	divisions = new wxListBox(left_panel, ID_ListBox);
 	Connect(ID_ListBox, wxEVT_COMMAND_LISTBOX_SELECTED, wxCommandEventHandler(DivisionsView::OnSelectDivision));
-	editor = new DivisionEditor(frame, this, 0);
+	left_panel_sizer->Add(new_div, 0, wxEXPAND);
+    left_panel_sizer->Add(divisions, 1, wxEXPAND);
 
+	/* right panel */
+    auto right_panel = new wxPanel(splitter, wxID_ANY);
+    auto right_panel_sizer = new wxBoxSizer(wxHORIZONTAL);
+    right_panel->SetSizer(right_panel_sizer);
+
+	editor = new DivisionEditor(frame, right_panel, 0);
+	right_panel_sizer->Add(editor, 1, wxEXPAND);
+
+	splitter->SplitVertically(left_panel, right_panel);
+	splitter->SetMinimumPaneSize(125);
 	DivisionChanged();
 	_Size();
 }
@@ -51,17 +71,7 @@ void DivisionsView::OnSelectDivision(wxCommandEvent &WXUNUSED(event)){
 
 void DivisionsView::_Size(){
 	wxSize size = GetClientSize();
-	if (size.x > 100){
-		new_div->Show(true);
-		divisions->Show(true);
-		new_div->SetSize(0, 0, 100, 45);
-		divisions->SetSize(0, 45, 100, size.y-45);
-		editor->SetSize(100, 0, size.x-100, size.y);
-	}else{
-		new_div->Show(false);
-		divisions->Show(false);
-		editor->SetSize(0, 0, size.x, size.y);
-	}
+	splitter->SetSize(size);
 }
 
 

@@ -30,30 +30,97 @@ midi(0), defview(0), smf_output(0), wos_clipboard(0), def_clipboard(0), bms_clip
 division(0)
 {
 	SetWindowStyle(wxBORDER_NONE | wxCLIP_CHILDREN);
-	midi = new MidiView(this, ID_MidiView);
-	defview = new DefinitionView(this, 0);
-	smf_output = new wxButton(this, ID_SmfOutput, _("Write MIDI File"));
-	wos_clipboard = new wxButton(this, ID_WosClipboard, _("Copy woslicer II Cutting Positions"));
-	def_clipboard = new wxButton(this, ID_DefClipboard, _("Open BMS WAV definitions..."));
-	bms_clipboard = new wxButton(this, ID_BmsClipboard, _("Copy BMS Data to Clipboard"));
-	def_transpose_up   = new wxButton(this, ID_DefTransposeUp, _("<"));
-	def_transpose_down = new wxButton(this, ID_DefTransposeDown, _(">"));
-	def_transpose_to   = new wxButton(this, ID_DefTransposeTo, _("Transpose to..."));
-	Connect(ID_SmfOutput, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnSmfOut));
-	Connect(ID_WosClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDivCopy));
-	Connect(ID_DefClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefOut));
-	Connect(ID_BmsClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnSeqCopy));
+	//                 Horizontal Splitter
+	//                           v
+	/*                  MIDI     | BUTN1
+	 * Vert. Splitter > =========| BUTN2
+	 *                  TRANSPOSE| BUTNn
+	 * */
+
+	horizontal_splitter = new wxSplitterWindow(this);
+
+	/* Left panel */
+	auto left_panel = new wxPanel(horizontal_splitter);
+	auto left_panel_sizer = new wxBoxSizer(wxVERTICAL);
+	left_panel->SetSizer(left_panel_sizer);
+
+	auto vertical_splitter = new wxSplitterWindow(left_panel);
+
+    midi = new MidiView(vertical_splitter, ID_MidiView);
+
+    /* transpose panel */
+    auto transpose_panel = new wxPanel(vertical_splitter);
+    auto transpose_panel_sizer = new wxBoxSizer(wxHORIZONTAL);
+    transpose_panel->SetSizer(transpose_panel_sizer);
+
+    defview = new DefinitionView(transpose_panel, 0);
+
+    /* transpose button panel */
+    auto transpose_button_panel = new wxPanel(transpose_panel);
+    auto transpose_button_panel_sizer = new wxBoxSizer(wxVERTICAL);
+    transpose_button_panel->SetSizer(transpose_button_panel_sizer);
+
+    auto transpose_button_panel_top = new wxPanel(transpose_button_panel);
+    auto transpose_button_panel_top_sizer = new wxBoxSizer(wxHORIZONTAL);
+    transpose_button_panel_top->SetSizer(transpose_button_panel_top_sizer);
+
+    def_transpose_up   = new wxButton(transpose_button_panel_top, ID_DefTransposeUp, _("<"));
+    def_transpose_down = new wxButton(transpose_button_panel_top, ID_DefTransposeDown, _(">"));
+    def_transpose_to   = new wxButton(transpose_button_panel, ID_DefTransposeTo, _("Transpose to..."));
+
+    transpose_button_panel_top_sizer->Add(def_transpose_up);
+    transpose_button_panel_top_sizer->Add(def_transpose_down);
+
+    transpose_button_panel_sizer->Add(transpose_button_panel_top);
+    transpose_button_panel_sizer->Add(def_transpose_to, 1, wxEXPAND);
+
+    /* finally add the previous components to the transpose panel */
+    transpose_panel_sizer->Add(defview, 8, wxEXPAND);
+    transpose_panel_sizer->Add(transpose_button_panel, 1, wxEXPAND);
+
+    /* do the splits */
+    vertical_splitter->SplitHorizontally(midi, transpose_panel, -60);
+    vertical_splitter->SetSashGravity(1);
+    left_panel_sizer->Add(vertical_splitter, 1, wxEXPAND);
+
+    /* Right panel */
+	auto right_panel = new wxPanel(horizontal_splitter);
+	auto right_panel_sizer = new wxBoxSizer(wxVERTICAL);
+	right_panel->SetSizer(right_panel_sizer);
+
+    smf_output = new wxButton(right_panel, ID_SmfOutput, _("Write MIDI File"));
+    wos_clipboard = new wxButton(right_panel, ID_WosClipboard, _("Copy woslicer II Cutting Positions"));
+    def_clipboard = new wxButton(right_panel, ID_DefClipboard, _("Open BMS WAV definitions..."));
+    bms_clipboard = new wxButton(right_panel, ID_BmsClipboard, _("Copy BMS Data to Clipboard"));
+    right_panel_sizer->Add(smf_output, 1, wxEXPAND);
+    right_panel_sizer->Add(wos_clipboard, 1, wxEXPAND);
+    right_panel_sizer->Add(def_clipboard, 1, wxEXPAND);
+    right_panel_sizer->Add(bms_clipboard, 1, wxEXPAND);
+
+	horizontal_splitter->SplitVertically(left_panel, right_panel, -200);
+	horizontal_splitter->SetSashGravity(1);
+
+	auto hs_sizer = new wxBoxSizer(wxHORIZONTAL);
+
+
+
+	/* Connections */
+    Connect(ID_SmfOutput, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnSmfOut));
+    Connect(ID_WosClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDivCopy));
+    Connect(ID_DefClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefOut));
+    Connect(ID_BmsClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnSeqCopy));
 	Connect(ID_MidiView, wxEVT_SET_STATUS_TEXT, wxCommandEventHandler(DivisionEditor::OnSetStatusText));
 	Connect(ID_DefTransposeUp, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefTransposeUp));
 	Connect(ID_DefTransposeDown, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefTransposeDown));
 	Connect(ID_DefTransposeTo, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefTransposeTo));
-	midi->SetMidiData(0);
+	midi->SetMidiData(nullptr);
 	midi->Show();
 }
 
 
 void DivisionEditor::OnSize(wxSizeEvent &WXUNUSED(event)){
-	_Size();
+	// _Size();
+	horizontal_splitter->SetSize(GetClientSize());
 }
 
 void DivisionEditor::OnSetStatusText(wxCommandEvent &event){
@@ -61,7 +128,8 @@ void DivisionEditor::OnSetStatusText(wxCommandEvent &event){
 }
 
 void DivisionEditor::SetDivision(Division *_div){
-	if (division = _div){
+    division = _div;
+    if (division){
 		midi->SetMidiData(division);
 		defview->SetDivision(division);
 		smf_output->Enable(true);
@@ -72,8 +140,8 @@ void DivisionEditor::SetDivision(Division *_div){
 		def_transpose_down->Enable(true);
 		def_transpose_to->Enable(true);
 	}else{
-		midi->SetMidiData(0);
-		defview->SetDivision(0);
+		midi->SetMidiData(nullptr);
+		defview->SetDivision(nullptr);
 		smf_output->Enable(false);
 		wos_clipboard->Enable(false);
 		def_clipboard->Enable(false);
@@ -84,21 +152,6 @@ void DivisionEditor::SetDivision(Division *_div){
 	}
 }
 
-
-void DivisionEditor::_Size(){
-	static const int wr = 200, hd = 60, hi = 0, tw = 80;
-	wxSize size = GetClientSize();
-	midi->SetSize(0, 0, size.x-wr, size.y-hd-hi);
-	defview->SetSize(0, size.y-hd-hi, size.x-wr-tw, hd);
-
-	smf_output->SetSize(size.x-wr, 0, wr, (size.y-hd-hi)/2);
-	wos_clipboard->SetSize(size.x-wr, (size.y-hd-hi)/2, wr, size.y-hd-hi-(size.y-hd-hi)/2);
-	def_clipboard->SetSize(size.x-wr, size.y-hd-hi, wr, hd/2);
-	bms_clipboard->SetSize(size.x-wr, size.y-hd-hi+hd/2, wr, hd-hd/2);
-	def_transpose_up->SetSize(size.x-wr-tw, size.y-hd-hi, tw/2, hd/2);
-	def_transpose_down->SetSize(size.x-wr-tw+tw/2, size.y-hd-hi, tw-tw/2, hd/2);
-	def_transpose_to->SetSize(size.x-wr-tw, size.y-hd-hi+hd/2, tw, hd-hd/2);
-}
 
 void DivisionEditor::_SmfOut(){
 	if (!division) return;
