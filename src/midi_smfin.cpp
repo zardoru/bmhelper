@@ -138,6 +138,7 @@ public:
 
 
 bool MidiData::load_smf(const wxString &filename) {
+    /* preload midi file */
     SmfData smf;
     if (!smf.load(filename)) {
         return false;
@@ -146,13 +147,16 @@ bool MidiData::load_smf(const wxString &filename) {
     size_t track_count = smf.get_track_count();
     if (!track_count) return false;
 
-    init(); /* don't write on top of existing MIDI data in case of reload */
+    init(); /* az: don't write on top of existing MIDI data in case of reload */
+    source_filename = filename;
 
     std::vector<MidiData_PreLoader> track_pre(track_count);
     for (size_t i = 0; i < track_count; i++) {
         SmfDataAccessor sda(smf, i);
         sda.GetAllEvents(track_pre[i]);
     }
+
+    /* show track/channels dialog */
     auto dialog = new LoadSmfDialog(track_pre);
     dialog->ShowModal();
     bool channel_mask[16];
@@ -160,6 +164,7 @@ bool MidiData::load_smf(const wxString &filename) {
     for (int i = 0; i < 16; i++)
         channel_mask[i] = dialog->get_channel_mask(i);
 
+    /* read into this... */
     MidiData_SmfReader reader(*this, channel_mask);
     SmfDataAccessor acc(smf, dialog->get_track());
     acc.GetAllEvents(reader);

@@ -20,6 +20,7 @@ public:
 	typedef std::vector<MidiParamEvent> MidiParamsLane;
 	typedef std::map<int, MidiParamsLane> MidiCCLanesMap;
 	typedef std::pair<int, MidiParamsLane> MidiCCLanePair;
+    wxString source_filename;
 
 private:
 	int quantize;

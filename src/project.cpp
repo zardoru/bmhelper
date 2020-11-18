@@ -161,6 +161,10 @@ bool Project::write_tree(TreeNode &node) {
     return true;
 }
 
+void Project::SetNewSource(const wxString &filename) {
+    source.load_smf(filename);
+}
+
 
 
 

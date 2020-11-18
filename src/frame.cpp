@@ -226,10 +226,16 @@ void FrameWindow::OnClose(wxCloseEvent &event){
 
 void FrameWindow::OnDropFiles(wxDropFilesEvent &event){
 	Raise();
-	if (project && !_AskCloseProject()) return;
+	// since we replace the source midi now instead... it doesn't matter
+	/* if (project && !_AskCloseProject()) return; */
 	for (int i=0; i<event.GetNumberOfFiles(); i++){
 		try{
-			SetProject(new Project(event.GetFiles()[i]));
+		    auto file = event.GetFiles()[i];
+		    if (!project)
+			    SetProject(new Project(file));
+		    else {
+		        project->SetNewSource(file);
+		    }
 		}catch(...){
 			wxMessageBox(wxString(_("Couldn't open file:\r\n")) + event.GetFiles()[i], app_name, wxICON_ERROR | wxOK, this);
 			continue;

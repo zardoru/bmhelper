@@ -273,7 +273,11 @@ void DivisionsView::_NewDivision(){
 	if (!frame->project) return;
 	int quantize = frame->project->GetSource().get_quantize();
 	DivisionSetting setting;
-	setting.name = wxString::Format(_("division %zu"), frame->project->GetDivisionsCount()+1);
+
+	wxFileName fn(frame->project->GetSource().source_filename);
+	auto fn_no_ext = fn.GetName();
+
+	setting.name = fn_no_ext;
 	setting.src_copy = false;
 	setting.head_margin = 0;
 	setting.min_interval = quantize*1;

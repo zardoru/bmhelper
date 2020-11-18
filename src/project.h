@@ -40,6 +40,7 @@ public:
 	~Project();
 	void init();
 	bool save_project(const wxString &filename) const;
+	void SetNewSource(const wxString &filename); /* replace current source MIDI... */
 
 	void SetChangeFlag(bool f=true);
 	bool Titled() const;

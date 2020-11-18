@@ -14,26 +14,26 @@ struct _MidiCCEvent : public MidiParamEvent{
 
 bool MidiData::read_tree(TreeNode &node){
 	init();
-	for (TreeNode::iterator sub=node.begin(); sub!=node.end(); sub++){
-		if (sub->get_name() == _qntz_){
-			if (sub->get_data_size() == sizeof(int)) sub->get_data(&quantize, sizeof(int));
-		}else if (sub->get_name() == _note_){
+	for (auto & sub : node){
+		if (sub.get_name() == _qntz_){
+			if (sub.get_data_size() == sizeof(int)) sub.get_data(&quantize, sizeof(int));
+		}else if (sub.get_name() == _note_){
 			MidiNoteEvent e;
-			if (sub->get_data_size() == sizeof(MidiNoteEvent)){
-				sub->get_data(&e, sizeof(MidiNoteEvent));
+			if (sub.get_data_size() == sizeof(MidiNoteEvent)){
+				sub.get_data(&e, sizeof(MidiNoteEvent));
 				note_events.push_back(e);
 			}
-		}else if (sub->get_name() == _ptch_){
+		}else if (sub.get_name() == _ptch_){
 			MidiParamEvent e;
-			if (sub->get_data_size() == sizeof(MidiParamEvent)){
-				sub->get_data(&e, sizeof(MidiParamEvent));
+			if (sub.get_data_size() == sizeof(MidiParamEvent)){
+				sub.get_data(&e, sizeof(MidiParamEvent));
 				pb_events.push_back(e);
 			}
-		}else if (sub->get_name() == _cchg_){
+		}else if (sub.get_name() == _cchg_){
 			_MidiCCEvent e;
-			if (sub->get_data_size() == sizeof(_MidiCCEvent)){
-				sub->get_data(&e, sizeof(_MidiCCEvent));
-				MidiCCLanesMap::iterator i = cc_lanes.find(e.cc_num);
+			if (sub.get_data_size() == sizeof(_MidiCCEvent)){
+				sub.get_data(&e, sizeof(_MidiCCEvent));
+				auto i = cc_lanes.find(e.cc_num);
 				if (i == cc_lanes.end()){
 					std::pair< MidiCCLanesMap::iterator, bool > x;
 					x = cc_lanes.insert(MidiCCLanePair(e.cc_num, MidiParamsLane()));
@@ -49,9 +49,9 @@ bool MidiData::read_tree(TreeNode &node){
 bool MidiData::write_tree(TreeNode &node){
 	node.push_back(_qntz_);
 	node.back().set_data(&quantize, sizeof(int));
-	for (MidiNotesLane::iterator i=note_events.begin(); i!=note_events.end(); i++){
+	for (auto & note_event : note_events){
 		node.push_back(_note_);
-		node.back().set_data(&(*i), sizeof(MidiNoteEvent));
+		node.back().set_data(&note_event, sizeof(MidiNoteEvent));
 	}
 	for (MidiParamsLane::iterator i=pb_events.begin(); i!=pb_events.end(); i++){
 		node.push_back(_ptch_);

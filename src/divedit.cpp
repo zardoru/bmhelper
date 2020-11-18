@@ -292,7 +292,7 @@ wxEND_EVENT_TABLE()
 
 void DivisionEditor::DefOut(){
 	if (!division) return;
-	wxString def_name = frame->project->GetTitle();
+	wxString def_name = division->get_name();
 	DefDialog dialog (frame, division, def_name);
 	dialog.ShowModal();
 	dialog.Destroy();
