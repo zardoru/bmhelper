@@ -3,9 +3,13 @@ project(bmhelper)
 
 set(CMAKE_CXX_STANDARD 17)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+
 find_package(wxWidgets REQUIRED COMPONENTS core base xml)
+find_package(Libsndfile REQUIRED)
 
 include_directories(src)
+include_directories(${LIBSNDFILE_INCLUDE_DIRS})
 
 add_executable(bmhelper WIN32
         src/app.cpp
@@ -38,15 +42,14 @@ add_executable(bmhelper WIN32
         src/smf_event.cpp
         src/smf_io.h
         src/srcview.cpp
-        src/srcview.h)
+        src/srcview.h src/AudioSplitter.cpp src/AudioSplitter.h src/wavsplit.cpp src/wavsplit.h)
 
-if(wxWidgets_FOUND)
-    include(${wxWidgets_USE_FILE})
-    # and for each of your dependent executable/library targets:
-    target_link_libraries(bmhelper ${wxWidgets_LIBRARIES})
-endif()
+include(${wxWidgets_USE_FILE})
+target_link_libraries(bmhelper ${wxWidgets_LIBRARIES} ${LIBSNDFILE_LIBRARIES})
 
 install(TARGETS bmhelper
+          DESTINATION .
+        RUNTIME
           DESTINATION .)
 
 install (DIRECTORY translations

@@ -18,6 +18,7 @@ class DivisionEditor : public wxWindow{
 	DefinitionView *defview;
 	wxButton *smf_output, *wos_clipboard;
 	wxButton *def_clipboard, *bms_clipboard;
+	wxButton *open_splitter;
 	wxButton *def_transpose_up, *def_transpose_down, *def_transpose_to;
 	Division *division;
 
@@ -48,6 +49,7 @@ public:
 	void OnDefOut(wxMenuEvent &event){ DefOut(); }
     bool OnDivRename(wxMenuEvent &event) { return DivRename(); }
 	void OnSeqCopy(wxMenuEvent &event){ _SeqCopy(); }
+	void OnOpenAudioSplitter(wxCommandEvent &event);
 	void OnSetStatusText(wxCommandEvent &event);
 	void OnDefTransposeUp(wxCommandEvent &event);
 	void OnDefTransposeDown(wxCommandEvent &event);
