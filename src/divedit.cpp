@@ -8,21 +8,30 @@
 #include <wx/dialog.h>
 
 enum {
-    ID_SmfOutput = 1,
-    ID_WosClipboard = 2,
-    ID_DefClipboard = 3,
-    ID_BmsClipboard = 4,
-    ID_DefTransposeUp = 5,
-    ID_DefTransposeDown = 6,
-    ID_DefTransposeTo = 7,
-    ID_MidiView = 8,
-    ID_OpenSplitter = 9
+    ID_SmfOutput,
+    ID_WosClipboard,
+    ID_DefClipboard,
+    ID_BmsClipboard,
+    ID_DefTransposeUp,
+    ID_DefTransposeDown,
+    ID_DefTransposeTo,
+    ID_MidiView,
+    ID_OpenSplitter
 };
 
 
-BEGIN_EVENT_TABLE(DivisionEditor, wxWindow)
+wxBEGIN_EVENT_TABLE(DivisionEditor, wxWindow)
     EVT_SIZE(DivisionEditor::OnSize)
-END_EVENT_TABLE()
+    EVT_BUTTON(ID_SmfOutput, DivisionEditor::OnSmfOut)
+    EVT_BUTTON(ID_WosClipboard, DivisionEditor::OnDivCopy)
+    EVT_BUTTON(ID_DefClipboard, DivisionEditor::OnDefOut)
+    EVT_BUTTON(ID_BmsClipboard, DivisionEditor::OnSeqCopy)
+    EVT_BUTTON(ID_OpenSplitter, DivisionEditor::OnOpenAudioSplitter)
+    EVT_COMMAND(ID_MidiView, wxEVT_SET_STATUS_TEXT, DivisionEditor::OnSetStatusText)
+    EVT_BUTTON(ID_DefTransposeUp, DivisionEditor::OnDefTransposeUp)
+    EVT_BUTTON(ID_DefTransposeDown, DivisionEditor::OnDefTransposeDown)
+    EVT_BUTTON(ID_DefTransposeTo, DivisionEditor::OnDefTransposeTo)
+wxEND_EVENT_TABLE()
 
 
 DivisionEditor::DivisionEditor(FrameWindow *_frame, wxWindow *parent, wxWindowID id,
@@ -103,17 +112,6 @@ DivisionEditor::DivisionEditor(FrameWindow *_frame, wxWindow *parent, wxWindowID
     horizontal_splitter->SplitVertically(left_panel, right_panel, -200);
     horizontal_splitter->SetSashGravity(1);
 
-    /* Connections */
-    Connect(ID_SmfOutput, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnSmfOut));
-    Connect(ID_WosClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDivCopy));
-    Connect(ID_DefClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefOut));
-    Connect(ID_BmsClipboard, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnSeqCopy));
-    Connect(ID_OpenSplitter, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnOpenAudioSplitter));
-    Connect(ID_MidiView, wxEVT_SET_STATUS_TEXT, wxCommandEventHandler(DivisionEditor::OnSetStatusText));
-    Connect(ID_DefTransposeUp, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefTransposeUp));
-    Connect(ID_DefTransposeDown, wxEVT_COMMAND_BUTTON_CLICKED,
-            wxCommandEventHandler(DivisionEditor::OnDefTransposeDown));
-    Connect(ID_DefTransposeTo, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(DivisionEditor::OnDefTransposeTo));
     midi->SetMidiData(nullptr);
     midi->Show();
 }
@@ -255,7 +253,7 @@ DECLARE_EVENT_TABLE()
 
 
 BEGIN_EVENT_TABLE(DefTransposeDialog, wxDialog)
-                EVT_COMMAND(wxID_OK, wxEVT_COMMAND_BUTTON_CLICKED, DefTransposeDialog::OnOK)
+    EVT_COMMAND(wxID_OK, wxEVT_COMMAND_BUTTON_CLICKED, DefTransposeDialog::OnOK)
 END_EVENT_TABLE()
 
 
@@ -351,9 +349,9 @@ DECLARE_EVENT_TABLE()
 };
 
 wxBEGIN_EVENT_TABLE(DefDialog, wxDialog)
-                EVT_COMMAND(DefDialog::ID_COPY, wxEVT_COMMAND_BUTTON_CLICKED, DefDialog::OnCopy)
-                EVT_SIZE(DefDialog::OnSize)
-                EVT_TEXT(DefDialog::ID_Name, OnNameUpdate)
+    EVT_COMMAND(DefDialog::ID_COPY, wxEVT_COMMAND_BUTTON_CLICKED, DefDialog::OnCopy)
+    EVT_SIZE(DefDialog::OnSize)
+    EVT_TEXT(DefDialog::ID_Name, OnNameUpdate)
 wxEND_EVENT_TABLE()
 
 void DivisionEditor::DefOut() {
