@@ -71,8 +71,7 @@ void SplitFile(
 }
 
 std::vector<double> GetSplitPoints(Division *pDivision, double bpm, double offset_ms) {
-    std::vector<double> ret;
-    ret.reserve(pDivision->notes_count());
+    std::set<double> ret;
 
     for (int i = 0; i < pDivision->notes_count(); i++) {
         auto note = pDivision->notes(i);
@@ -80,8 +79,8 @@ std::vector<double> GetSplitPoints(Division *pDivision, double bpm, double offse
         auto spb = 60 / bpm;
         auto time = spb * beat + offset_ms / 1000.0;
 
-        ret.push_back(time);
+        ret.insert(time);
     }
 
-    return ret;
+    return std::vector(ret.begin(), ret.end());
 }

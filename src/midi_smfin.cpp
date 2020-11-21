@@ -85,7 +85,7 @@ public:
         auto channels_lbl = new wxStaticText(this, ID_Tracks_Text, _("Channels (&C):"));
         dlg_sizer->Add(channels_lbl);
 
-        auto chan_grid = new wxGridSizer(4, 4, 3, 3);
+        auto chan_grid = new wxGridSizer(4, 4, 5, 5);
         dlg_sizer->Add(chan_grid);
 
         for (int i = 0; i < 16; i++) {
