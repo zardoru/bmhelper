@@ -52,6 +52,11 @@ install(TARGETS bmhelper
         RUNTIME
           DESTINATION .)
 
-install (DIRECTORY translations
-         DESTINATION i18n
+install (DIRECTORY i18n
+         DESTINATION .
          FILES_MATCHING PATTERN "*.mo")
+
+#install(CODE [[
+#    file(GET_RUNTIME_DEPENDENCIES
+#        EXECUTABLES
+#            bmhelper)]])
