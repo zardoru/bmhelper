@@ -208,31 +208,93 @@ public:
 			_("vel/nn/gate"),
 			_("vel/gate/nn"),
 		};
-		name_label = new wxStaticText(this, ID_NameLabel, _("Name (&N):"), wxPoint(_lm,_tm+3), wxSize(_fc,15));
-		name_input = new wxTextCtrl(this, ID_NameInput, setting.name, wxPoint(_lm+_fc, _tm), wxSize(_sc, 18));
-        midi_box = new wxStaticBox(this, ID_MidiBox, _("MIDI settings"), wxPoint(5,_tm+_lw+3), wxSize(_fc+_sc+23,_lw*8+3));
-        scpy_check = new wxCheckBox(this, ID_ScpyCheck, _("Leave MIDI unaltered (&C)"), wxPoint(_lm, _tm+_lw*2), wxSize(_fc+_sc,18)); scpy_check->SetValue(setting.src_copy);
-        mhmg_label = new wxStaticText(this, ID_MhmgLabel, _("Leading silence (&H):"), wxPoint(_lm,_tm+_lw*3+3), wxSize(_fc,15));
-        mhmg_input = new wxTextCtrl(this, ID_MhmgInput, wxString::Format(_("%f"), (double)setting.head_margin/quantize), wxPoint(_lm+_fc, _tm+_lw*3), wxSize(_sc, 18));
-        mint_label = new wxStaticText(this, ID_MintLabel, _("Min. interval gap (&I):"), wxPoint(_lm,_tm+_lw*4+3), wxSize(_fc,15));
-        mint_input = new wxTextCtrl(this, ID_MintInput, wxString::Format(_("%f"), (double)setting.min_interval/quantize), wxPoint(_lm+_fc, _tm+_lw*4), wxSize(_sc, 18));
-        sort_label = new wxStaticText(this, ID_SortLabel, _("Sorting method (&S):"), wxPoint(_lm,_tm+_lw*5+3), wxSize(_fc,15));
-        sort_combo = new wxComboBox(this, ID_SortCombo, sort_choices[(int)setting.sort_type], wxPoint(_lm+_fc, _tm+_lw*5), wxSize(_sc, 18), 7, sort_choices, wxCB_DROPDOWN | wxCB_READONLY);
-        thrs_label = new wxStaticText(this, ID_ThrsLabel, _("Minimum difference in:"), wxPoint(_lm,_tm+_lw*6+3), wxSize(_fc+_sc,15));
-        tgat_label = new wxStaticText(this, ID_TgatLabel, _(" Length (&G):"), wxPoint(_lm,_tm+_lw*7+3), wxSize(_fc,15));
-        tgat_input = new wxTextCtrl(this, ID_TgatInput, wxString::Format(_("%f"), (double)setting.gate_threshold/quantize), wxPoint(_lm+_fc, _tm+_lw*7), wxSize(_sc, 18));
-        tvel_label = new wxStaticText(this, ID_TvelLabel, _(" Velocity (&V):"), wxPoint(_lm,_tm+_lw*8+3), wxSize(_fc,15));
-        tvel_input = new wxTextCtrl(this, ID_TvelInput, wxString::Format(_("%zu"), setting.velocity_threshold), wxPoint(_lm+_fc, _tm+_lw*8), wxSize(_sc, 18));
-        defn_box = new wxStaticBox(this, ID_DefnBox, _("Definition settings"), wxPoint(5,_tm+_lw*10+3), wxSize(_fc+_sc+23,_lw*4+3));
+
+		auto spacing = 10;
+		auto this_sizer = new wxBoxSizer(wxVERTICAL);
+		auto main_flags = wxSizerFlags().Border(wxALL, 10).Expand();
+
+		auto name_row = new wxBoxSizer(wxHORIZONTAL);
+		name_label = new wxStaticText(this, ID_NameLabel, _("Name (&N):"));
+		name_input = new wxTextCtrl(this, ID_NameInput, setting.name);
+		name_row->Add(name_label);
+		name_row->AddSpacer(spacing);
+		name_row->Add(name_input, 1);
+
+		this_sizer->Add(name_row, main_flags);
+
+		auto settings_row = new wxStaticBoxSizer(wxVERTICAL, this, _("MIDI settings"));
+		auto settings_row_flags = wxSizerFlags().Border(wxALL, spacing).Expand();
+
+        scpy_check = new wxCheckBox(this, ID_ScpyCheck, _("Leave MIDI unaltered (&C)"));
+        scpy_check->SetValue(setting.src_copy);
+		settings_row->Add(scpy_check, settings_row_flags);
+
+		auto midi_settings_sizer = new wxGridSizer(3, 2, 10, 10);
+
+        mhmg_label = new wxStaticText(this, ID_MhmgLabel, _("Leading silence (&H):"));
+        mhmg_input = new wxTextCtrl(this, ID_MhmgInput, wxString::Format(_("%f"), (double)setting.head_margin/quantize));
+        mint_label = new wxStaticText(this, ID_MintLabel, _("Min. interval gap (&I):"));
+        mint_input = new wxTextCtrl(this, ID_MintInput, wxString::Format(_("%f"), (double)setting.min_interval/quantize));
+        sort_label = new wxStaticText(this, ID_SortLabel, _("Sorting method (&S):"));
+        sort_combo = new wxComboBox(this, ID_SortCombo, sort_choices[(int)setting.sort_type], wxDefaultPosition, wxDefaultSize, 7, sort_choices, wxCB_DROPDOWN | wxCB_READONLY);
+
+        midi_settings_sizer->Add(mhmg_label);
+        midi_settings_sizer->Add(mhmg_input, wxSizerFlags().Expand());
+        midi_settings_sizer->Add(mint_label);
+        midi_settings_sizer->Add(mint_input, wxSizerFlags().Expand());
+        midi_settings_sizer->Add(sort_label);
+        midi_settings_sizer->Add(sort_combo, wxSizerFlags().Expand());
+
+        settings_row->Add(midi_settings_sizer, settings_row_flags);
+
+        auto min_difference_settings_sizer_outer = new wxStaticBoxSizer(wxVERTICAL, this, _("Minimum difference in:"));
+        settings_row->Add(min_difference_settings_sizer_outer, wxSizerFlags().Expand());
+
+        auto min_difference_settings_sizer = new wxGridSizer(2, 2, 10, 10);
+        min_difference_settings_sizer_outer->Add(min_difference_settings_sizer, wxSizerFlags().Border(wxALL, spacing).Expand());
+
+        tgat_label = new wxStaticText(this, ID_TgatLabel, _(" Length (&G):"));
+        tgat_input = new wxTextCtrl(this, ID_TgatInput, wxString::Format(_("%f"), (double)setting.gate_threshold/quantize));
+        tvel_label = new wxStaticText(this, ID_TvelLabel, _(" Velocity (&V):"));
+        tvel_input = new wxTextCtrl(this, ID_TvelInput, wxString::Format(_("%zu"), setting.velocity_threshold));
+        min_difference_settings_sizer->Add(tgat_label);
+        min_difference_settings_sizer->Add(tgat_input, wxSizerFlags().Expand());
+        min_difference_settings_sizer->Add(tvel_label);
+        min_difference_settings_sizer->Add(tvel_input, wxSizerFlags().Expand());
+
+        this_sizer->Add(settings_row, main_flags);
+
+        auto def_settings_sizer_outer = new wxStaticBoxSizer(wxVERTICAL, this, _("Definition settings"));
+        this_sizer->Add(def_settings_sizer_outer, main_flags);
+
+        auto def_settings_sizer = new wxGridSizer(3, 2, 15, 15);
+        def_settings_sizer_outer->Add(def_settings_sizer, wxSizerFlags().Border(wxALL, spacing));
+
 //		dfzz_label = new wxStaticText(this, ID_DfzzLabel, _("ZZ定義を有効にする(&Z):"), wxPoint(_lm,_tm+_lw*11+3), wxSize(_fc,15));
-        dfzz_check = new wxCheckBox(this, ID_DfzzCheck, _("Use base-36 range(00-ZZ) (&Z)"), wxPoint(_lm, _tm+_lw*11), wxSize((_fc+_sc)/2,18)); dfzz_check->SetValue(setting.zz_definition);
-        dfml_check = new wxCheckBox(this, ID_DfmlCheck, _("Use overloading (&M)"), wxPoint(_lm+(_fc+_sc)/2,_tm+_lw*11), wxSize((_fc+_sc)/2,18)); dfml_check->SetValue(setting.ml_definition);
-        dfst_label = new wxStaticText(this, ID_DfstLabel, _("Starting BMS Index (&D):"), wxPoint(_lm,_tm+_lw*12+3), wxSize(_fc,15));
-        dfst_input = new wxTextCtrl(this, ID_DfstInput, setting.start_definition.to_string(), wxPoint(_lm+_fc, _tm+_lw*12), wxSize(_sc, 18));
-        dfmt_label = new wxStaticText(this, ID_DfmtLabel, _("Overloading Interval (&L):"), wxPoint(_lm,_tm+_lw*13+3), wxSize(_fc,15));
-        dfmt_input = new wxTextCtrl(this, ID_DfmtInput, wxString::Format(_("%f"), (double)setting.ml_threshold/quantize), wxPoint(_lm+_fc, _tm+_lw*13), wxSize(_sc, 18));
-        button_ok = new wxButton(this, wxID_OK, _("OK"), wxPoint(_lm,_tm+_lw*15), wxSize((_fc+_sc-_lm)/2, 28));
-        button_cancel = new wxButton(this, wxID_CANCEL, _("Cancel"), wxPoint(_lm+(_fc+_sc+_lm)/2,_tm+_lw*15), wxSize((_fc+_sc+_lm)/2, 28));
+        dfzz_check = new wxCheckBox(this, ID_DfzzCheck, _("Use base-36 range(00-ZZ) (&Z)")); dfzz_check->SetValue(setting.zz_definition);
+        dfml_check = new wxCheckBox(this, ID_DfmlCheck, _("Use overloading (&M)")); dfml_check->SetValue(setting.ml_definition);
+        dfst_label = new wxStaticText(this, ID_DfstLabel, _("Starting BMS Index (&D):"));
+        dfst_input = new wxTextCtrl(this, ID_DfstInput, setting.start_definition.to_string());
+        dfmt_label = new wxStaticText(this, ID_DfmtLabel, _("Overloading Interval (&L):"));
+        dfmt_input = new wxTextCtrl(this, ID_DfmtInput, wxString::Format(_("%f"), (double)setting.ml_threshold/quantize));
+
+        def_settings_sizer->Add(dfzz_check);
+        def_settings_sizer->Add(dfml_check);
+        def_settings_sizer->Add(dfst_label);
+        def_settings_sizer->Add(dfst_input, wxSizerFlags().Expand());
+        def_settings_sizer->Add(dfmt_label);
+        def_settings_sizer->Add(dfmt_input, wxSizerFlags().Expand());
+
+
+        auto dialog_bottom_sizer = new wxBoxSizer(wxHORIZONTAL);
+        this_sizer->Add(dialog_bottom_sizer, wxSizerFlags().Align(wxALIGN_RIGHT).Border(wxALL));
+
+        button_ok = new wxButton(this, wxID_OK, _("OK"));
+        button_cancel = new wxButton(this, wxID_CANCEL, _("Cancel"));
+        dialog_bottom_sizer->Add(button_ok);
+        dialog_bottom_sizer->Add(button_cancel);
+
+        SetSizerAndFit(this_sizer);
 		button_ok->SetDefault();
 		SetEscapeId(wxID_CANCEL);
 	}
