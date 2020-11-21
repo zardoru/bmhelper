@@ -115,9 +115,9 @@ AudioSplitter::AudioSplitter(wxWindow *parent, const wxPoint &pos, const wxSize 
     sizer->Add(panel_parameters, wxSizerFlags().Border(wxALL, 10).Expand());
     sizer->Add(panel_bottom, wxSizerFlags().Align(wxALIGN_RIGHT).Border(wxALL, 10));
 
+    sizer->SetMinSize(size);
     SetSizerAndFit(sizer);
     panel->SetSize(GetSize());
-    // SetMinSize(size);
 
     DragAcceptFiles(true);
 }
