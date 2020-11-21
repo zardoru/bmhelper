@@ -383,7 +383,7 @@ bool DivisionEditor::DivRename() {
 void DivisionEditor::OnOpenAudioSplitter(wxCommandEvent &event) {
     if (!division) return;
 
-    auto splitter = new AudioSplitter(this, wxDefaultPosition, wxSize(800, 300), division);
+    auto splitter = new AudioSplitter(this, wxDefaultPosition, wxSize(-1, -1), division);
     splitter->Show();
 }
 

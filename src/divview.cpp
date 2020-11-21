@@ -330,7 +330,7 @@ public:
 		}
 		this->EndDialog(wxID_OK);
 	}
-	DECLARE_EVENT_TABLE()
+	wxDECLARE_EVENT_TABLE();
 };
 
 

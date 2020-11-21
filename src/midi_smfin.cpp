@@ -47,16 +47,11 @@ class LoadSmfDialog : public wxDialog {
         ID_Channels_Check = 0x120
     };
 
-    void _on_size() {
-        wxSize size = GetClientSize();
-        if (combo_trk) combo_trk->SetSize(95, 5, size.x - 100, 15);
-        if (button_ok) button_ok->SetSize(size.x - 125, size.y - 30, 120, 25);
-    }
 
 public:
     LoadSmfDialog(std::vector<MidiData_PreLoader> &_tracks)
             : wxDialog(0, -1, _("MIDI file import settings"), wxDefaultPosition,
-                       wxSize(290, 185), wxDEFAULT_DIALOG_STYLE & ~wxCLOSE_BOX | wxRESIZE_BORDER),
+                       wxSize(290, 130), wxDEFAULT_DIALOG_STYLE & ~wxCLOSE_BOX),
               tracks(_tracks), combo_trk(0), button_ok(0) {
         size_t def = 0;
         for (size_t i = 0; i < tracks.size(); i++) {
@@ -70,27 +65,46 @@ public:
             track_choices[i] = wxString::Format(_("%04X: %s"), (int) i, tracks[i].track_name.c_str());
         }
 
-        new wxStaticText(this, ID_Tracks_Text, _("Tracks (&T):"), wxPoint(5, 8), wxSize(85, 15));
-        combo_trk = new wxComboBox(this, ID_Tracks_Choice, track_choices[def], wxPoint(95, 5),
-                                   wxSize(200, 15), tracks.size(), track_choices.data(), wxCB_DROPDOWN | wxCB_READONLY);
+        auto this_sizer = new wxBoxSizer(wxVERTICAL);
+        auto dlg_sizer = new wxGridSizer(2, 2, 10, 10);
+
+        this_sizer->Add(dlg_sizer, wxSizerFlags().Border(wxALL, 10));
+
+        auto tracks_lbl = new wxStaticText(this, ID_Tracks_Text, _("Tracks (&T):"), wxPoint(5, 8), wxSize(85, 15));
+        dlg_sizer->Add(tracks_lbl);
+
+        combo_trk = new wxComboBox(this, ID_Tracks_Choice, track_choices[def],
+                                   wxDefaultPosition,
+                                   wxDefaultSize,
+                                   tracks.size(),
+                                   track_choices.data(),
+                                   wxCB_DROPDOWN | wxCB_READONLY);
         combo_trk->SetSelection(def);
-        new wxStaticText(this, ID_Tracks_Text, _("Channels (&C):"), wxPoint(5, 38), wxSize(85, 15));
+        dlg_sizer->Add(combo_trk);
+
+        auto channels_lbl = new wxStaticText(this, ID_Tracks_Text, _("Channels (&C):"));
+        dlg_sizer->Add(channels_lbl);
+
+        auto chan_grid = new wxGridSizer(4, 4, 3, 3);
+        dlg_sizer->Add(chan_grid);
+
         for (int i = 0; i < 16; i++) {
-            int ix = i % 4, iy = i / 4;
-            check_chs[i] = new wxCheckBox(this, ID_Channels_Check + i, wxString::Format(_("%02X"), i),
-                                          wxPoint(95 + ix * 40, 35 + iy * 20), wxSize(35, 15));
+            check_chs[i] = new wxCheckBox(this, ID_Channels_Check + i, wxString::Format("%02X", i));
             check_chs[i]->SetValue(true);
+            chan_grid->Add(check_chs[i]);
         }
+
         button_ok = new wxButton(this, wxID_OK, _("OK"));
         button_ok->SetDefault();
-        SetMinSize(wxSize(290, 185));
+        this_sizer->Add(button_ok, wxSizerFlags().Align(wxALIGN_RIGHT).Border(wxALL, 10));
+
+        // SetMinSize(wxSize(290, 185));
+        SetSizerAndFit(this_sizer);
         SetEscapeId(wxID_NONE);
-        _on_size();
     }
 
     ~LoadSmfDialog() override = default;
 
-    void OnSize(wxSizeEvent &WXUNUSED(ev)) { _on_size(); }
 
 DECLARE_EVENT_TABLE()
 public:

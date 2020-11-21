@@ -13,6 +13,7 @@ class AudioSplitter : public wxFrame {
 
     wxSpinCtrlDouble *bpm_ctrl;
     wxSpinCtrlDouble *offset_ctrl;
+    wxPanel *panel;
 public:
     AudioSplitter(wxWindow *parent, const wxPoint &pos, const wxSize& size, Division* div);
 
@@ -21,6 +22,7 @@ public:
     void OnBrowseInput(wxCommandEvent &evt);
     void OnBrowseOutput(wxCommandEvent &evt);
     void OnDropFiles(wxDropFilesEvent &evt);
+    void OnSize(wxSizeEvent &evt);
     wxDECLARE_EVENT_TABLE();
 
     void SetInputAudioFile(wxString input_file);
