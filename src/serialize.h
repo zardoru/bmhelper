@@ -5,10 +5,10 @@
 #include "common.h"
 #include <wx/file.h>
 
-// �f�[�^�̊ȈՐK�􂢍�
-// �ق�RIFF�Ɠ����K�w�^�`�����N�V�X�e���B���g���G���f�B�A���B
-// RIFF�ł����Ƃ����RIFF/LIST�`�����N�͑啶���p���Ŏn�܂�`�����N��(�m�[�h��)�ŕ\���B����ȊO�͒ʏ�`�����N
-// �����e�̉��ɓ����m�[�h���̃m�[�h�����������Ă��悢
+// データの簡易尻洗い座
+// ほぼRIFFと同じ階層型チャンクシステム。リトルエンディアン。
+// RIFFでいうところのRIFF/LISTチャンクは大文字英数で始まるチャンク名(ノード名)で表す。それ以外は通常チャンク
+// 同じ親の下に同じノード名のノードが複数あってもよい
 
 
 typedef unsigned long NodeName;
@@ -63,7 +63,7 @@ private:
 		NodeSizeType size;
 		file.Read(&size, sizeof(NodeSizeType));
 		if (is_list()){
-			// ���X�g�n�̃A���Ȃ�q�v�f��ǂݍ���
+			// リスト系のアレなら子要素を読み込む
 			wxFileOffset inner_head = file.Tell();
 			wxFileOffset inner_tail = inner_head + size;
 			while (file.Tell() < inner_tail){
@@ -72,7 +72,7 @@ private:
 			}
 			file.Seek(inner_tail);
 		}else{
-			// ���X�g�łȂ���Ύ�����data�ɓǂݍ���
+			// リストでなければ自分のdataに読み込む
 			if (size){
 				data = new char[data_size = size];
 				file.Read(data, data_size);
@@ -84,8 +84,8 @@ private:
 		if (is_list()){
 			file.Seek(sizeof(NodeSizeType), wxFromCurrent);
 			wxFileOffset inner_head = file.Tell();
-			for (std::vector<TreeNode>::const_iterator i=begin(); i!=end(); i++){
-				i->write(file);
+			for (const auto & i : *this){
+				i.write(file);
 			}
 			wxFileOffset inner_tail = file.Tell();
 			NodeSizeType size = inner_tail - inner_head;

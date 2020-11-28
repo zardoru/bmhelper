@@ -190,6 +190,17 @@ static void sort_notes(
 
 Division::Division(Project *_project, MidiData &src, const DivisionSetting &setting)
         : MidiData(src.get_quantize()), project(_project), name(setting.name), zz_enabled(setting.zz_definition) {
+    divide_from_data(src, setting);
+}
+
+void Division::divide_from_data(MidiData &src, const DivisionSetting &setting, bool copy) {
+    if (copy)
+        src_data = src; // store a copy of the src data...
+
+    init(); /* clean ourselves up */
+
+    name = setting.name;
+
     std::vector<ReferredNote> temp_divs;
     std::vector<int> src2div(src.notes_count());
     src2def.resize(src.notes_count());
@@ -205,21 +216,27 @@ Division::Division(Project *_project, MidiData &src, const DivisionSetting &sett
             note.referrers.push_back(i);
             src2div[i] = i;
         }
+
         // Midiデータにそのまま配置
         for (size_t i = 0; i < temp_divs.size(); i++) {
             note_push_back(
                     MidiNoteEvent(src.notes(i).position + setting.head_margin, temp_divs[i].gate, temp_divs[i].nn,
                                   temp_divs[i].vel));
         }
-        if (src.notes_count() > 0) head_margin = src.notes(0).position+setting.head_margin;
+
+        if (src.notes_count() > 0) head_margin = src.notes(0).position + setting.head_margin;
     } else {
         // 分割
-        ThresholdSetting thresholds{};
-        thresholds.gate = setting.gate_threshold;
-        thresholds.vel = setting.velocity_threshold;
+        ThresholdSetting thresholds {
+            static_cast<int>(setting.gate_threshold),
+            static_cast<int>(setting.velocity_threshold)
+        };
+
         divide_notes(src, src2div, temp_divs, thresholds);
+
         // ソート
         sort_notes(temp_divs, src2div, setting.sort_type);
+
         // Midiデータに流し込み
         int position = setting.head_margin;
         for (auto & temp_div : temp_divs) {
@@ -228,6 +245,7 @@ Division::Division(Project *_project, MidiData &src, const DivisionSetting &sett
             int b = position % get_quantize();
             if (b) position += get_quantize() - b;
         }
+
         head_margin = setting.head_margin;
     }
 
@@ -258,18 +276,19 @@ Division::Division(Project *_project, MidiData &src, const DivisionSetting &sett
         } else {
             mln = 1;    // 多重定義しない
         }
+
         size_t id_i = definitions.size();
         for (size_t b = 0; b < mln; b++) {
             definitions.push_back(Definition(zz, i));
             if (setting.zz_definition) zz++; else zz.increment_in_ff();
         }
+
         size_t b = 0;
         for (int referrer : temp_divs[i].referrers) {
             src2def[referrer] = id_i + b;
             if (++b == mln) b = 0;
         }
     }
-
 }
 
 
@@ -366,6 +385,7 @@ static const NodeName _name_ = StringToNodeName("name");
 static const NodeName _s2df_ = StringToNodeName("s2df");
 static const NodeName _dfnt_ = StringToNodeName("dfnt");
 static const NodeName _zzen_ = StringToNodeName("zzen");
+static const NodeName _srcd_ = StringToNodeName("Srcd"); /* source data (first letter caps = list) */
 
 struct BmsOffsetData {
     bool zz_enabled;
@@ -400,6 +420,8 @@ bool Division::read_tree(TreeNode &node) {
                 sub.get_data(&data, sizeof(BmsOffsetData));
                 zz_enabled = data.zz_enabled;
             }
+        } else if (sub.get_name() == _srcd_) {
+            src_data.read_tree(sub);
         }
     }
     return true;
@@ -430,8 +452,28 @@ bool Division::write_tree(TreeNode &node) {
 
     node.push_back(_zzen_);
     node.back().set_data(&offset_data, sizeof(BmsOffsetData));
+
+    node.push_back(_srcd_);
+    src_data.write_tree(node.back());
+
     return true;
 }
 
+void Division::change_division_settings(const DivisionSetting &setting) {
+    divide_from_data(src_data, setting, false);
+}
 
 
+DivisionSetting::DivisionSetting(const wxString &name, size_t quantize) {
+    this->name = name;
+    src_copy = false;
+    head_margin = 0;
+    min_interval = quantize*1;
+    sort_type = DivisionSetting::SORT_NN_GATE_V;
+    gate_threshold = quantize/8;
+    velocity_threshold = 5;
+    zz_definition = true;
+    ml_definition = true;
+    start_definition = 1;
+    ml_threshold = quantize/2;
+}

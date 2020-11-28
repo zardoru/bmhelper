@@ -6,6 +6,7 @@
 #include "AudioSplitter.h"
 #include <wx/clipbrd.h>
 #include <wx/dialog.h>
+#include "divsettingdialog.h"
 
 enum {
     ID_SmfOutput,
@@ -385,6 +386,19 @@ void DivisionEditor::OnOpenAudioSplitter(wxCommandEvent &event) {
 
     auto splitter = new AudioSplitter(this, wxDefaultPosition, wxSize(800, -1), division);
     splitter->Show();
+}
+
+bool DivisionEditor::OnDivRegenerate(wxMenuEvent &event) {
+    if (!division) return false;
+    DivisionSetting setting(division->get_name(), division->get_quantize());
+
+    DivisionSettingDialog dialog(frame, setting, division->get_quantize());
+    if (dialog.ShowModal() != wxID_OK)
+        return false;
+
+    dialog.GetSetting(setting);
+    division->change_division_settings(setting);
+    return true;
 }
 
 

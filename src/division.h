@@ -33,6 +33,7 @@ struct DivisionSetting{
 	ZZNumber start_definition;	// �J�n��`�ԍ�
 	int ml_threshold;			// ���d��`���邩�ǂ����̃m�[�g�Ԋu��臒l(���l���ݒ�B���x�̏ꍇ�͑��d��`���Ȃ�)
 
+	DivisionSetting(const wxString &name, size_t quantize);
 };
 
 
@@ -60,6 +61,8 @@ private:
 	int head_margin;
 	bool zz_enabled;
 
+	MidiData src_data;
+
 	//void _divide_notes(std::vector<int> &src2div, std::vector<ReferredNote> &temp_divs, ThresholdSetting &thresholds);
 	//void _sort_notes(std::vector<ReferredNote> &temp_divs, DivisionSetting::SortType sort_type);
 
@@ -67,7 +70,7 @@ public:
 	Division(Project *_project);
 	Division(Project *_project, MidiData &src, const DivisionSetting &setting);
 	void init() override {
-		//MidiData::init();
+		MidiData::init();
 		name.clear();
 		src2def.clear();
 		definitions.clear();
@@ -94,6 +97,9 @@ public:
 	void def_transpose_up();
 	void def_transpose_down();
 	void def_transpose_to(ZZNumber nbegin);
+
+    void divide_from_data(MidiData &src, const DivisionSetting &setting, bool copy = true);
+    void change_division_settings(const DivisionSetting &setting);
 };
 
 

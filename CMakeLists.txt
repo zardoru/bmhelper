@@ -43,7 +43,7 @@ add_executable(bmhelper WIN32
         src/smf_event.cpp
         src/smf_io.h
         src/srcview.cpp
-        src/srcview.h src/AudioSplitter.cpp src/AudioSplitter.h src/wavsplit.cpp src/wavsplit.h)
+        src/srcview.h src/AudioSplitter.cpp src/AudioSplitter.h src/wavsplit.cpp src/wavsplit.h src/divsettingdialog.h)
 
 include(${wxWidgets_USE_FILE})
 target_link_libraries(bmhelper ${wxWidgets_LIBRARIES} ${LIBSNDFILE_LIBRARIES})

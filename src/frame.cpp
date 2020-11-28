@@ -20,6 +20,7 @@ enum {
 	ID_DivDefOut	= 0x0205,
 	ID_DivSeqCopy	= 0x0206,
 	ID_DivRename    = 0x0207,
+	ID_DivDivRegen = 0x208,
 	ID_Help		= 0x0901,
 	ID_About	= 0x0903
 };
@@ -42,7 +43,7 @@ wxEND_EVENT_TABLE()
 
 
 FrameWindow::FrameWindow(const wxPoint &pos, const wxSize &size)
-: wxFrame(NULL, -1, app_name, pos, size),
+: wxFrame(nullptr, -1, app_name, pos, size),
 menu_bar(new wxMenuBar), status_bar(CreateStatusBar()),
 m_file(new wxMenu), m_div(new wxMenu), m_help(new wxMenu),
 m_file_new(new wxMenuItem(m_file, ID_New, _("New project (&N)...\tCtrl+N"))),
@@ -56,26 +57,29 @@ m_div_rename(new wxMenuItem(m_div, ID_DivRename, _("Rename division (&R)...\tF2"
 m_div_delete(new wxMenuItem(m_div, ID_DivDelete, _("Delete division (&D)"))),
 m_div_smfout(new wxMenuItem(m_div, ID_DivSmfOut, _("Write modified MIDI File (&M)..."))),
 m_div_divcopy(new wxMenuItem(m_div, ID_DivDivCopy, _("Copy division (&W)"))),
+m_div_divregen(new wxMenuItem(m_div, ID_DivDivRegen, _("Regenerate division (&E)...\tCtrl+R"))),
 m_div_defout(new wxMenuItem(m_div, ID_DivDefOut, _("Definition information (&D)..."))),
 m_div_seqcopy(new wxMenuItem(m_div, ID_DivSeqCopy, _("Copy BMS sequence to clipboard (&S)"))),
 m_help_help(new wxMenuItem(m_help, ID_Help, _("Help (&H)...\tF1"))),
 m_help_about(new wxMenuItem(m_help, ID_About, _("About (&I)..."))),
-splitter(0), src(0), div(0),
-project(0)
+splitter(nullptr), src(nullptr), div(nullptr),
+project(nullptr)
 {
 	// init gui
 	wxIcon ico("BMHICON", wxBITMAP_TYPE_ICO_RESOURCE);
 	SetIcon(ico);
 
-	wxAcceleratorEntry acs[7];
+	wxAcceleratorEntry acs[9];
 	acs[0].Set(wxACCEL_CTRL, (int)'N', ID_New);
 	acs[1].Set(wxACCEL_CTRL, (int)'O', ID_Open);
 	acs[2].Set(wxACCEL_CTRL, (int)'S', ID_Save);
 	acs[3].Set(wxACCEL_CTRL | wxACCEL_SHIFT, (int)'S', ID_SaveAs);
 	acs[4].Set(wxACCEL_CTRL, (int)'Q', ID_Quit);
 	acs[5].Set(wxACCEL_NORMAL, WXK_F5, ID_DivNew);
-	acs[6].Set(wxACCEL_NORMAL, WXK_F2, ID_Help);
-	wxAcceleratorTable accel(7, acs);
+	acs[6].Set(wxACCEL_NORMAL, WXK_F1, ID_Help);
+    acs[7].Set(wxACCEL_NORMAL, WXK_F2, ID_DivRename);
+    acs[8].Set(wxACCEL_CTRL, (int)'R', ID_DivDivRegen);
+	wxAcceleratorTable accel(9, acs);
 	SetAcceleratorTable(accel);
 
 	m_file->Append(m_file_new);
@@ -86,8 +90,10 @@ project(0)
 	m_file->AppendSeparator();
 	m_file->Append(m_file_quit);
 	menu_bar->Append(m_file, _("File (&F)"));
+
 	m_div->Append(m_div_new);
 	m_div->Append(m_div_rename);
+	m_div->Append(m_div_divregen);
 	m_div->Append(m_div_delete);
 	m_div->AppendSeparator();
 	m_div->Append(m_div_smfout);
@@ -95,9 +101,11 @@ project(0)
 	m_div->Append(m_div_defout);
 	m_div->Append(m_div_seqcopy);
 	menu_bar->Append(m_div, _("Divisions (&D)"));
+
 	m_help->Append(m_help_help);
 	m_help->Append(m_help_about);
 	menu_bar->Append(m_help, _("Help (&H)"));
+
 	SetMenuBar(menu_bar);
 
 	status_bar->SetFieldsCount(3);
@@ -115,6 +123,7 @@ project(0)
 	Connect(ID_DivDelete, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionsView::OnDeleteDivision), 0, div);
 	Connect(ID_DivSmfOut, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnSmfOut), 0, div->editor);
 	Connect(ID_DivDivCopy, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnDivCopy), 0, div->editor);
+    Connect(ID_DivDivRegen, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionsView::OnDivRegenerate), 0, div);
 	Connect(ID_DivDefOut, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnDefOut), 0, div->editor);
 	Connect(ID_DivSeqCopy, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionEditor::OnSeqCopy), 0, div->editor);
     Connect(ID_DivRename, wxEVT_COMMAND_MENU_SELECTED, wxMenuEventHandler(DivisionsView::OnDivRename), 0, div);
@@ -123,7 +132,7 @@ project(0)
 }
 
 FrameWindow::~FrameWindow(){
-	SetProject(0);
+	SetProject(nullptr);
 }
 
 void FrameWindow::OpenFiles(int nFiles, std::vector<wxString> FileNames){

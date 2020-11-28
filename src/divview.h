@@ -46,6 +46,7 @@ public:
 	void OnSeqCopy(wxCommandEvent &event){ _SeqCopy(); }
 	void OnSmfOut(wxMenuEvent &event){ _SmfOut(); }
 	void OnDivCopy(wxMenuEvent &event){ _DivCopy(); }
+	bool OnDivRegenerate(wxMenuEvent &event);
 	void OnDefOut(wxMenuEvent &event){ DefOut(); }
     bool OnDivRename(wxMenuEvent &event) { return DivRename(); }
 	void OnSeqCopy(wxMenuEvent &event){ _SeqCopy(); }
@@ -83,6 +84,7 @@ public:
 	void OnNewDivision(wxMenuEvent &event);
 	void OnDeleteDivision(wxMenuEvent &event);
     void OnDivRename(wxMenuEvent &event);
+    void OnDivRegenerate(wxMenuEvent &event);
 	void OnSelectDivision(wxCommandEvent &event);
 	void ProjectChanged();
 	void DivisionChanged();
