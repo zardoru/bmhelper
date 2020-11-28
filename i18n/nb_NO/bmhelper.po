@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bmhelper\n"
-"POT-Creation-Date: 2020-11-09 00:25-0300\n"
-"PO-Revision-Date: 2020-11-09 17:28-0300\n"
+"POT-Creation-Date: 2020-11-27 17:04-0300\n"
+"PO-Revision-Date: 2020-11-27 17:05-0300\n"
 "Last-Translator: \n"
 "Language-Team: Dolphin\n"
 "Language: nb\n"
@@ -29,386 +29,420 @@ msgstr ""
 "X-Poedit-SearchPath-13: smf_event.cpp\n"
 "X-Poedit-SearchPath-14: srcview.cpp\n"
 
-#: defview.cpp:47 divview.cpp:209
+#: app.cpp:21
+msgid "Please choose language:"
+msgstr ""
+
+#: app.cpp:22
+msgid "Language"
+msgstr ""
+
+#: app.cpp:42
+#, c-format
+msgid "Couldn't find/load the 'bmhelper' catalog for locale '%s'."
+msgstr ""
+
+#: app.cpp:43
+msgid "unknown"
+msgstr ""
+
+#: defview.cpp:47
 #, c-format
 msgid "%d"
 msgstr ""
 
-#: divedit.cpp:35
-msgid "Write MIDI File"
-msgstr "Lagre MIDI-fil"
-
-#: divedit.cpp:36
-msgid "Copy woslicer II Cutting Positions"
-msgstr "Kopier kuttepunktene til woslicerII"
-
-#: divedit.cpp:37
-msgid "Open BMS WAV definitions..."
-msgstr "Åpne WAV-listen..."
-
-#: divedit.cpp:38
-msgid "Copy BMS Data to Clipboard"
-msgstr "Kopier notedataen til BMS-filen"
-
-#: divedit.cpp:39
+#: divedit.cpp:77
 msgid "<"
 msgstr ""
 
-#: divedit.cpp:40
+#: divedit.cpp:78
 msgid ">"
 msgstr ""
 
-#: divedit.cpp:41
+#: divedit.cpp:79
 msgid "Transpose to..."
 msgstr "Transponer til..."
 
-#: divedit.cpp:106
+#: divedit.cpp:101
+msgid "Write MIDI File"
+msgstr "Lagre MIDI-fil"
+
+#: divedit.cpp:102
+msgid "Copy woslicer II Cutting Positions"
+msgstr "Kopier kuttepunktene til woslicerII"
+
+#: divedit.cpp:103
+msgid "Open BMS WAV definitions..."
+msgstr "Åpne WAV-listen..."
+
+#: divedit.cpp:104
+msgid "Copy BMS Data to Clipboard"
+msgstr "Kopier notedataen til BMS-filen"
+
+#: divedit.cpp:105
+msgid "Open built-in audio cutter"
+msgstr ""
+
+#: divedit.cpp:160
 msgid "MIDI files"
 msgstr "MIDI-filer"
 
-#: divedit.cpp:109 frame.cpp:156 project.cpp:16
+#: divedit.cpp:163 frame.cpp:160 project.cpp:14
 msgid "mid"
 msgstr ""
 
-#: divedit.cpp:118
+#: divedit.cpp:172
 msgid "Failed to export MIDI file."
 msgstr "Kunne ikke eksportere MIDI-fil."
 
-#: divedit.cpp:129 divedit.cpp:140 divedit.cpp:280
+#: divedit.cpp:183 divedit.cpp:194 divedit.cpp:344
 msgid "Clipboard is not available."
 msgstr "Fikk ikke tilgang til utklippstavlen."
 
-#: divedit.cpp:170
+#: divedit.cpp:224
 msgid "WAV definitions"
 msgstr "WAV-liste"
 
-#: divedit.cpp:172 divview.cpp:218 midi_smfin.cpp:79
+#: divedit.cpp:226 divview.cpp:292 midi_smfin.cpp:98
 msgid "OK"
 msgstr ""
 
-#: divedit.cpp:252
+#: divedit.cpp:310
 #, c-format
 msgid "#WAV%s %s_%03d.wav\r\n"
 msgstr ""
 
-#: divedit.cpp:259 divedit.cpp:270
+#: divedit.cpp:320 divedit.cpp:332
 msgid "untitled"
 msgstr "uten navn"
 
-#: divedit.cpp:260
+#: divedit.cpp:321
 msgid "BMS WAV definitions"
 msgstr "WAV-liste i BMS"
 
-#: divedit.cpp:261
+#: divedit.cpp:323
 msgid "Filename (&F):"
 msgstr "Filnavn (&F):"
 
-#: divedit.cpp:264
+#: divedit.cpp:327
 msgid "Copy to clipboard (&C)"
 msgstr "Kopier til utklippstavle (&C)"
 
-#: divedit.cpp:265
+#: divedit.cpp:328
 msgid "Close (&W)"
 msgstr "Avslutt (&W)"
 
-#: division.cpp:315 division.cpp:324
+#: divedit.cpp:369
+#, c-format
+msgid "Rename '%s' to"
+msgstr ""
+
+#: divedit.cpp:370
+msgid "Rename division"
+msgstr ""
+
+#: division.cpp:330 division.cpp:340
 msgid "BMSE ClipBoard Object Data Format\r\n"
 msgstr ""
 
-#: division.cpp:317
+#: division.cpp:333
 #, c-format
-msgid "011%08d1\r\n"
+msgid "011%08zu1\r\n"
 msgstr ""
 
-#: division.cpp:336
+#: division.cpp:352
 #, c-format
 msgid "1%02d%08d%d\r\n"
 msgstr ""
 
-#: divview.cpp:28
+#: divview.cpp:39
 msgid "New division..."
 msgstr "Ny oppdeling..."
 
-#: divview.cpp:91
+#: divview.cpp:103
 #, c-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Er du sikker på at du ønsker å slette %s?"
 
-#: divview.cpp:184
+#: divview.cpp:200
 msgid "Division settings"
 msgstr "Innstillinger for oppdelingen"
 
-#: divview.cpp:187
+#: divview.cpp:203
 msgid "None"
 msgstr "Ingen"
 
-#: divview.cpp:188
+#: divview.cpp:204
 msgid "nn/gate/vel"
 msgstr ""
 
-#: divview.cpp:189
+#: divview.cpp:205
 msgid "nn/vel/gate"
 msgstr ""
 
-#: divview.cpp:190
+#: divview.cpp:206
 msgid "gate/nn/vel"
 msgstr ""
 
-#: divview.cpp:191
+#: divview.cpp:207
 msgid "gate/vel/nn"
 msgstr ""
 
-#: divview.cpp:192
+#: divview.cpp:208
 msgid "vel/nn/gate"
 msgstr ""
 
-#: divview.cpp:193
+#: divview.cpp:209
 msgid "vel/gate/nn"
 msgstr ""
 
-#: divview.cpp:195
+#: divview.cpp:217
 msgid "Name (&N):"
 msgstr "Navn (&N):"
 
-#: divview.cpp:197
+#: divview.cpp:225
 msgid "MIDI settings"
 msgstr "MIDI-innstillinger"
 
-#: divview.cpp:198
+#: divview.cpp:228
 msgid "Leave MIDI unaltered (&C)"
 msgstr "La MIDI forbli uforandret (&C)"
 
-#: divview.cpp:199
+#: divview.cpp:234
 msgid "Leading silence (&H):"
 msgstr "Innledende stillhet (&H):"
 
-#: divview.cpp:200 divview.cpp:202 divview.cpp:207 divview.cpp:217
+#: divview.cpp:235 divview.cpp:237 divview.cpp:257 divview.cpp:279
 #, c-format
 msgid "%f"
 msgstr ""
 
-#: divview.cpp:201
+#: divview.cpp:236
 msgid "Min. interval gap (&I):"
 msgstr "Minste mulige mellomrom mellom notene:"
 
-#: divview.cpp:203
+#: divview.cpp:238
 msgid "Sorting method (&S):"
 msgstr "Sorter etter:"
 
-#: divview.cpp:205
+#: divview.cpp:250
 msgid "Minimum difference in:"
 msgstr "Minste mulige forskjell mellom:"
 
-#: divview.cpp:206
+#: divview.cpp:256
 msgid " Length (&G):"
 msgstr " Lengde (&G):"
 
-#: divview.cpp:208
+#: divview.cpp:258
 msgid " Velocity (&V):"
 msgstr " Styrke (&V):"
 
-#: divview.cpp:210
+#: divview.cpp:259
+#, c-format
+msgid "%zu"
+msgstr ""
+
+#: divview.cpp:267
 msgid "Definition settings"
 msgstr "Innstillinger for WAV-liste"
 
-#: divview.cpp:212
+#: divview.cpp:274
 msgid "Use base-36 range(00-ZZ) (&Z)"
 msgstr "Bruk wavZZ-format (opptil 1295 lyder) (&Z)"
 
-#: divview.cpp:213
+#: divview.cpp:275
 msgid "Use overloading (&M)"
 msgstr "Benytt multidefinisjoner (&M)"
 
-#: divview.cpp:214
+#: divview.cpp:276
 msgid "Starting BMS Index (&D):"
 msgstr "Startindex for WAV-listen (&D)"
 
-#: divview.cpp:216
+#: divview.cpp:278
 msgid "Overloading Interval (&L):"
 msgstr "Nødvendig overlapp for multidefinisjoner (&L)"
 
-#: divview.cpp:219
+#: divview.cpp:293
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: divview.cpp:270
-#, c-format
-msgid "division %d"
-msgstr ""
-
-#: frame.cpp:47
+#: frame.cpp:48
 msgid "New project (&N)...\tCtrl+N"
 msgstr "Nytt prosjekt (&N)...\tCtrl+N"
 
-#: frame.cpp:48
+#: frame.cpp:49
 msgid "Open project (&O)...\tCtrl+O"
 msgstr "Åpne prosjekt (&O)...\tCtrl+O"
 
-#: frame.cpp:49
+#: frame.cpp:50
 msgid "Save project (&S)\tCtrl+S"
 msgstr "Lagre prosjekt (&S)\tCtrl+S"
 
-#: frame.cpp:50
+#: frame.cpp:51
 msgid "Save project as (&A)...\tCtrl+Shift+S"
 msgstr "Lagre prosjekt som (&A)...\tCtrl+Shift+S"
 
-#: frame.cpp:51
+#: frame.cpp:52
 msgid "Close project (&C)"
 msgstr "Lukk prosjekt (&C)"
 
-#: frame.cpp:52
+#: frame.cpp:53
 msgid "Quit (&X)\tCtrl+Q"
 msgstr "Avslutt (&X)\tCtrl+Q"
 
-#: frame.cpp:53
+#: frame.cpp:54
 msgid "New division (&N)...\tF5"
 msgstr "Ny oppdeling (&N)...\tF5"
 
-#: frame.cpp:54
+#: frame.cpp:55
+msgid "Rename division (&R)...\tF2"
+msgstr ""
+
+#: frame.cpp:56
 msgid "Delete division (&D)"
 msgstr "Slett oppdeling (&D)"
 
-#: frame.cpp:55
+#: frame.cpp:57
 msgid "Write modified MIDI File (&M)..."
 msgstr "Lagre redigert MIDI-fil (&M)..."
 
-#: frame.cpp:56
+#: frame.cpp:58
 msgid "Copy division (&W)"
 msgstr "Kopier oppdeling (&W)"
 
-#: frame.cpp:57
+#: frame.cpp:59
 msgid "Definition information (&D)..."
 msgstr "Informasjon om WAV-listen (&D)..."
 
-#: frame.cpp:58
+#: frame.cpp:60
 msgid "Copy BMS sequence to clipboard (&S)"
 msgstr "Kopier BMS-notedata til utklippstavle (&S)"
 
-#: frame.cpp:59
+#: frame.cpp:61
 msgid "Help (&H)...\tF1"
 msgstr "Hjelp (&H)...\tF1"
 
-#: frame.cpp:60
+#: frame.cpp:62
 msgid "About (&I)..."
 msgstr "Om programmet (&I)..."
 
-#: frame.cpp:86
+#: frame.cpp:88
 msgid "File (&F)"
 msgstr "Fil (&F)"
 
-#: frame.cpp:94
+#: frame.cpp:97
 msgid "Divisions (&D)"
 msgstr "Oppdelinger (&D)"
 
-#: frame.cpp:97
+#: frame.cpp:100
 msgid "Help (&H)"
 msgstr "Hjelp (&H)"
 
-#: frame.cpp:132 frame.cpp:230
+#: frame.cpp:136 frame.cpp:240
 msgid "Couldn't open file:\r\n"
 msgstr "Kunne ikke åpne fil:\n"
 
-#: frame.cpp:153
+#: frame.cpp:157
 msgid "Please select source MIDI file"
 msgstr "Velg MIDI-filen som skal benyttes"
 
-#: frame.cpp:166 frame.cpp:179
+#: frame.cpp:170 frame.cpp:183
 msgid "Couldn't open file"
 msgstr "Kunne ikke åpne filen"
 
-#: frame.cpp:174
+#: frame.cpp:178
 msgid "Open project file"
 msgstr "Åpne prosjekt"
 
-#: frame.cpp:259
+#: frame.cpp:269
 msgid "Save project as"
 msgstr "Lagre prosjekt som"
 
-#: frame.cpp:267
+#: frame.cpp:277
 msgid "The project has been modified. Do you want to save?"
 msgstr "Dette prosjektet har endringer. Ønsker du å lager nå?"
 
-#: frame.cpp:283
+#: frame.cpp:293
 #, c-format
-msgid "source: %dn"
-msgstr "Kilde: %dn"
+msgid "source: %zun"
+msgstr ""
 
-#: frame.cpp:311
+#: frame.cpp:321
 msgid "* - "
 msgstr ""
 
-#: frame.cpp:312
+#: frame.cpp:322
 msgid " - "
 msgstr ""
 
-#: frame.cpp:313
+#: frame.cpp:323
 msgid "New project* - "
 msgstr "Nytt prosjekt* - "
 
-#: frame.cpp:326
+#: frame.cpp:336
 #, c-format
-msgid "%s: %dn/%dd"
+msgid "%s: %zun/%zud"
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "C "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "C#"
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "D "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "D#"
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "E "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "F "
 msgstr ""
 
-#: mdview.cpp:264
+#: mdview.cpp:259
 msgid "F#"
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "G "
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "G#"
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "A "
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "A#"
 msgstr ""
 
-#: mdview.cpp:265
+#: mdview.cpp:260
 msgid "B "
 msgstr ""
 
-#: mdview.cpp:267
+#: mdview.cpp:262
 #, c-format
 msgid "%s %d"
 msgstr ""
 
-#: mdview.cpp:278
+#: mdview.cpp:273
 #, c-format
 msgid "Note#%d ( %s ) gate:%d/%d vel:%d"
 msgstr ""
 
-#: midi_smfin.cpp:52
+#: midi_smfin.cpp:53
 msgid "MIDI file import settings"
 msgstr "Innstillinger for MIDI-importeringen"
 
@@ -417,23 +451,18 @@ msgstr "Innstillinger for MIDI-importeringen"
 msgid "%04X: %s"
 msgstr ""
 
-#: midi_smfin.cpp:67
+#: midi_smfin.cpp:74
 msgid "Tracks (&T):"
 msgstr "Spor (Tracks) (&T):"
 
-#: midi_smfin.cpp:72
+#: midi_smfin.cpp:86
 msgid "Channels (&C):"
 msgstr "Kanaler (Channels) (&C):"
 
-#: midi_smfin.cpp:75
-#, c-format
-msgid "%02X"
-msgstr ""
-
-#: project.cpp:16
+#: project.cpp:14
 msgid "midi"
 msgstr ""
 
-#: project.cpp:16
+#: project.cpp:14
 msgid "smf"
 msgstr ""

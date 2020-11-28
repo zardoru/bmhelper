@@ -17,7 +17,7 @@ void SplitFile(
     SndfileHandle wav(infile);
 
     if (!wav) {
-        throw std::runtime_error(wxString::Format("Couldn't read input audio file '%s'", infile));
+        throw std::runtime_error(wxString::Format(_("Couldn't read input audio file '%s'"), infile));
     }
 
     wxFileName inpath(infile);
@@ -26,13 +26,13 @@ void SplitFile(
     wxFileName path(outpath);
 
     if (!path.IsDir())
-        throw std::runtime_error("Output path is not a directory");
+        throw std::runtime_error(_("Output path is not a directory"));
 
     if (!path.DirExists())
-        throw std::runtime_error("Output path does not exist");
+        throw std::runtime_error(_("Output path does not exist"));
 
     if (!path.IsDirWritable())
-        throw std::runtime_error("Output path is not writeable");
+        throw std::runtime_error(_("Output path is not writeable"));
 
     std::vector<double> time = GetSplitPoints(div, bpm, offset_ms);
     std::sort(time.begin(), time.end()); /* just in case */
@@ -55,7 +55,7 @@ void SplitFile(
         SndfileHandle wav_out(fn, SFM_WRITE, wav.format(), wav.channels(), wav.samplerate());
 
         if (!wav_out) {
-            throw std::runtime_error(wxString::Format("Couldn't open %s for output.", fn));
+            throw std::runtime_error(wxString::Format(_("Couldn't open %s for output."), fn));
         }
 
         /* duration of this splice is given by time_start and time_end */

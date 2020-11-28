@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bmhelper\n"
-"POT-Creation-Date: 2020-11-09 17:07-0300\n"
-"PO-Revision-Date: 2020-11-09 17:08-0300\n"
+"POT-Creation-Date: 2020-11-27 16:58-0300\n"
+"PO-Revision-Date: 2020-11-27 17:03-0300\n"
 "Last-Translator: \n"
 "Language-Team: zardoru\n"
 "Language: es_CL\n"
@@ -14,6 +14,71 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: AudioSplitter.cpp:26
+#, c-format
+msgid "Audio splitter (division: \"%s\")"
+msgstr "Cortador de Audio (división: \"%s\")"
+
+#: AudioSplitter.cpp:36
+msgid "Audio File"
+msgstr "Archivo de Audio"
+
+#: AudioSplitter.cpp:39
+msgid "You can drag and drop a .wav file into this window."
+msgstr "Puedes arrastrar un archivo .wav a esta ventana."
+
+#: AudioSplitter.cpp:44
+msgid "You can drag and drop a wav file into this window."
+msgstr "Pueeds arrastrar un archivo wav a esta ventana."
+
+#: AudioSplitter.cpp:47 AudioSplitter.cpp:62
+msgid "Browse..."
+msgstr "Buscar..."
+
+#: AudioSplitter.cpp:53
+msgid "Output Directory"
+msgstr "Directorio de salida"
+
+#: AudioSplitter.cpp:70
+msgid "Output sound file prefix:"
+msgstr "Prefijo del archivo de sonido de salida:"
+
+#: AudioSplitter.cpp:76
+msgid "Should be the same as the BMS WAV definitions."
+msgstr "Debe ser el mismo que las definiciones de WAV de BMS."
+
+#: AudioSplitter.cpp:82
+msgid "Slice Parameters"
+msgstr "Parámetros de corte"
+
+#: AudioSplitter.cpp:85
+msgid "BPM:"
+msgstr ""
+
+#: AudioSplitter.cpp:94
+msgid "Offset (MS):"
+msgstr "Compensación (MS):"
+
+#: AudioSplitter.cpp:108
+msgid "Split"
+msgstr "Cortar"
+
+#: AudioSplitter.cpp:109
+msgid "Close"
+msgstr "Cerrar (&W)"
+
+#: AudioSplitter.cpp:137
+msgid "Error while splitting file"
+msgstr "Error cortando archivo"
+
+#: AudioSplitter.cpp:147
+msgid "Select audio file..."
+msgstr "Seleccionar archivo de audio..."
+
+#: AudioSplitter.cpp:180
+msgid "Select audio output directory..."
+msgstr "Seleccionar directorio de audio de salida..."
 
 #: app.cpp:21
 msgid "Please choose language:"
@@ -37,227 +102,226 @@ msgstr ""
 msgid "%d"
 msgstr ""
 
-#: divedit.cpp:35
-msgid "Write MIDI File"
-msgstr "Exportar MIDI"
-
-#: divedit.cpp:36
-msgid "Copy woslicer II Cutting Positions"
-msgstr "Copiar datos de woslicer"
-
-#: divedit.cpp:37
-msgid "Open BMS WAV definitions..."
-msgstr "Ver definiciones de WAV de BMS..."
-
-#: divedit.cpp:38
-msgid "Copy BMS Data to Clipboard"
-msgstr "Copiar datos de BMS"
-
-#: divedit.cpp:39
+#: divedit.cpp:77
 msgid "<"
 msgstr ""
 
-#: divedit.cpp:40
+#: divedit.cpp:78
 msgid ">"
 msgstr ""
 
-#: divedit.cpp:41
+#: divedit.cpp:79
 msgid "Transpose to..."
 msgstr "Trasponer a..."
 
-#: divedit.cpp:106
+#: divedit.cpp:101
+msgid "Write MIDI File"
+msgstr "Exportar MIDI"
+
+#: divedit.cpp:102
+msgid "Copy woslicer II Cutting Positions"
+msgstr "Copiar datos de woslicer"
+
+#: divedit.cpp:103
+msgid "Open BMS WAV definitions..."
+msgstr "Ver definiciones de WAV de BMS..."
+
+#: divedit.cpp:104
+msgid "Copy BMS Data to Clipboard"
+msgstr "Copiar datos de BMS"
+
+#: divedit.cpp:105
+msgid "Open built-in audio cutter"
+msgstr "Abrir cortador de audio incluido"
+
+#: divedit.cpp:160
 msgid "MIDI files"
 msgstr "Archivos MIDI"
 
-#: divedit.cpp:109 frame.cpp:160 project.cpp:14
+#: divedit.cpp:163 frame.cpp:160 project.cpp:14
 msgid "mid"
 msgstr ""
 
-#: divedit.cpp:118
+#: divedit.cpp:172
 msgid "Failed to export MIDI file."
 msgstr "Fallo al exportar archivo MIDI."
 
-#: divedit.cpp:129 divedit.cpp:140 divedit.cpp:280
+#: divedit.cpp:183 divedit.cpp:194 divedit.cpp:344
 msgid "Clipboard is not available."
 msgstr "Portapapeles no disponible."
 
-#: divedit.cpp:170
+#: divedit.cpp:224
 msgid "WAV definitions"
 msgstr "Definiciones de WAV"
 
-#: divedit.cpp:172 divview.cpp:222 midi_smfin.cpp:84
+#: divedit.cpp:226 divview.cpp:292 midi_smfin.cpp:98
 msgid "OK"
 msgstr ""
 
-#: divedit.cpp:252
+#: divedit.cpp:310
 #, c-format
 msgid "#WAV%s %s_%03d.wav\r\n"
 msgstr ""
 
-#: divedit.cpp:259 divedit.cpp:270
+#: divedit.cpp:320 divedit.cpp:332
 msgid "untitled"
 msgstr "sin titulo"
 
-#: divedit.cpp:260
+#: divedit.cpp:321
 msgid "BMS WAV definitions"
 msgstr "Definiciones de WAV del BMS"
 
-#: divedit.cpp:261
+#: divedit.cpp:323
 msgid "Filename (&F):"
 msgstr "Nombre de archivo (&F)"
 
-#: divedit.cpp:264
+#: divedit.cpp:327
 msgid "Copy to clipboard (&C)"
 msgstr "Copiar al portapapeles (&C)"
 
-#: divedit.cpp:265
+#: divedit.cpp:328
 msgid "Close (&W)"
 msgstr "Cerrar (&W)"
 
-#: divedit.cpp:305
+#: divedit.cpp:369
 #, c-format
 msgid "Rename '%s' to"
 msgstr ""
 
-#: divedit.cpp:306
+#: divedit.cpp:370
 msgid "Rename division"
 msgstr "Renombrar división"
 
-#: division.cpp:330 division.cpp:339
+#: division.cpp:330 division.cpp:340
 msgid "BMSE ClipBoard Object Data Format\r\n"
 msgstr ""
 
-#: division.cpp:332
+#: division.cpp:333
 #, c-format
-msgid "011%08d1\r\n"
+msgid "011%08zu1\r\n"
 msgstr ""
 
-#: division.cpp:351
+#: division.cpp:352
 #, c-format
 msgid "1%02d%08d%d\r\n"
 msgstr ""
 
-#: divview.cpp:30
+#: divview.cpp:39
 msgid "New division..."
 msgstr "Nueva división..."
 
-#: divview.cpp:93
+#: divview.cpp:103
 #, c-format
 msgid "Are you sure you want to delete %s?"
 msgstr "Está seguro que quiere borrar %s?"
 
-#: divview.cpp:188
+#: divview.cpp:200
 msgid "Division settings"
 msgstr "Ajustes de división"
 
-#: divview.cpp:191
+#: divview.cpp:203
 msgid "None"
 msgstr "Ninguno"
 
-#: divview.cpp:192
+#: divview.cpp:204
 msgid "nn/gate/vel"
 msgstr ""
 
-#: divview.cpp:193
+#: divview.cpp:205
 msgid "nn/vel/gate"
 msgstr ""
 
-#: divview.cpp:194
+#: divview.cpp:206
 msgid "gate/nn/vel"
 msgstr ""
 
-#: divview.cpp:195
+#: divview.cpp:207
 msgid "gate/vel/nn"
 msgstr ""
 
-#: divview.cpp:196
+#: divview.cpp:208
 msgid "vel/nn/gate"
 msgstr ""
 
-#: divview.cpp:197
+#: divview.cpp:209
 msgid "vel/gate/nn"
 msgstr ""
 
-#: divview.cpp:199
+#: divview.cpp:217
 msgid "Name (&N):"
 msgstr "Nombre (&N)"
 
-#: divview.cpp:201
+#: divview.cpp:225
 msgid "MIDI settings"
 msgstr "Opciones del MIDI"
 
-#: divview.cpp:202
+#: divview.cpp:228
 msgid "Leave MIDI unaltered (&C)"
 msgstr "No alterar MIDI"
 
-#: divview.cpp:203
+#: divview.cpp:234
 msgid "Leading silence (&H):"
 msgstr "Silencio al inicio:"
 
-#: divview.cpp:204 divview.cpp:206 divview.cpp:211 divview.cpp:221
+#: divview.cpp:235 divview.cpp:237 divview.cpp:257 divview.cpp:279
 #, c-format
 msgid "%f"
 msgstr ""
 
-#: divview.cpp:205
+#: divview.cpp:236
 msgid "Min. interval gap (&I):"
 msgstr "Distancia de tiempo mínima:"
 
-#: divview.cpp:207
+#: divview.cpp:238
 msgid "Sorting method (&S):"
 msgstr "Método de ordenamiento:"
 
-#: divview.cpp:209
+#: divview.cpp:250
 msgid "Minimum difference in:"
 msgstr "Diferencias minimas en:"
 
-#: divview.cpp:210
+#: divview.cpp:256
 msgid " Length (&G):"
 msgstr " Duración (&G):"
 
-#: divview.cpp:212
+#: divview.cpp:258
 msgid " Velocity (&V):"
 msgstr " Velocity (&V):"
 
-#: divview.cpp:213
+#: divview.cpp:259
 #, c-format
 msgid "%zu"
 msgstr ""
 
-#: divview.cpp:214
+#: divview.cpp:267
 msgid "Definition settings"
 msgstr "Opciones de definición"
 
-#: divview.cpp:216
+#: divview.cpp:274
 msgid "Use base-36 range(00-ZZ) (&Z)"
 msgstr "Usar rango de base-36 (&Z)"
 
-#: divview.cpp:217
+#: divview.cpp:275
 msgid "Use overloading (&M)"
 msgstr "Usar sobrecarga (&M)"
 
-#: divview.cpp:218
+#: divview.cpp:276
 msgid "Starting BMS Index (&D):"
 msgstr "Indice de inicio del BMS (&D)"
 
-#: divview.cpp:220
+#: divview.cpp:278
 msgid "Overloading Interval (&L):"
 msgstr "Intervalo de sobrecarga (&L)"
 
-#: divview.cpp:223
+#: divview.cpp:293
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: divview.cpp:274
-#, c-format
-msgid "division %zu"
-msgstr "division %zu"
-
-#: divview.h:34
+#: divview.h:37
 msgid "DivisionsEditor"
 msgstr ""
 
-#: divview.h:73
+#: divview.h:78
 msgid "DivisionsView"
 msgstr ""
 
@@ -333,7 +397,7 @@ msgstr "Divisiones (&D)"
 msgid "Help (&H)"
 msgstr "Ayuda (&H)"
 
-#: frame.cpp:136 frame.cpp:234
+#: frame.cpp:136 frame.cpp:240
 msgid "Couldn't open file:\r\n"
 msgstr "No se pudo abrir archivo:\n"
 
@@ -349,32 +413,32 @@ msgstr "No se pudo abrir archivo"
 msgid "Open project file"
 msgstr "Abrir archivo de proyecto"
 
-#: frame.cpp:263
+#: frame.cpp:269
 msgid "Save project as"
 msgstr "Guardar proyecto como"
 
-#: frame.cpp:271
+#: frame.cpp:277
 msgid "The project has been modified. Do you want to save?"
 msgstr "El proyecto ha sido modificado. ¿Deseas guardar?"
 
-#: frame.cpp:287
+#: frame.cpp:293
 #, c-format
 msgid "source: %zun"
 msgstr "fuente: %zun"
 
-#: frame.cpp:315
+#: frame.cpp:321
 msgid "* - "
 msgstr ""
 
-#: frame.cpp:316
+#: frame.cpp:322
 msgid " - "
 msgstr ""
 
-#: frame.cpp:317
+#: frame.cpp:323
 msgid "New project* - "
 msgstr "Nuevo proyecto* - "
 
-#: frame.cpp:330
+#: frame.cpp:336
 #, c-format
 msgid "%s: %zun/%zud"
 msgstr ""
@@ -437,27 +501,22 @@ msgstr ""
 msgid "Note#%d ( %s ) gate:%d/%d vel:%d"
 msgstr ""
 
-#: midi_smfin.cpp:58
+#: midi_smfin.cpp:53
 msgid "MIDI file import settings"
 msgstr "Ajustes de importación de MIDI"
 
-#: midi_smfin.cpp:70
+#: midi_smfin.cpp:65
 #, c-format
 msgid "%04X: %s"
 msgstr ""
 
-#: midi_smfin.cpp:73
+#: midi_smfin.cpp:74
 msgid "Tracks (&T):"
 msgstr "Tracks (Pistas) (&T):"
 
-#: midi_smfin.cpp:77
+#: midi_smfin.cpp:86
 msgid "Channels (&C):"
 msgstr "Channels (Canales) (&C):"
-
-#: midi_smfin.cpp:80
-#, c-format
-msgid "%02X"
-msgstr ""
 
 #: project.cpp:14
 msgid "midi"
@@ -470,3 +529,29 @@ msgstr ""
 #: srcview.h:25
 msgid "SourceView"
 msgstr ""
+
+#: wavsplit.cpp:20
+#, c-format
+msgid "Couldn't read input audio file '%s'"
+msgstr "No se pudo leer archivo de sonido '%s'"
+
+#: wavsplit.cpp:29
+msgid "Output path is not a directory"
+msgstr "Directorio de salida no es un directorio"
+
+#: wavsplit.cpp:32
+msgid "Output path does not exist"
+msgstr "Directorio de salida no existe"
+
+#: wavsplit.cpp:35
+msgid "Output path is not writeable"
+msgstr "No se puede escribir al directorio de salida"
+
+#: wavsplit.cpp:58
+#, c-format
+msgid "Couldn't open %s for output."
+msgstr "No se pudo abrir el archivo '%s' para escritura."
+
+#, c-format
+#~ msgid "division %zu"
+#~ msgstr "division %zu"

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bmhelper\n"
-"POT-Creation-Date: 2020-11-09 17:07-0300\n"
-"PO-Revision-Date: 2020-11-09 17:50-0300\n"
+"POT-Creation-Date: 2020-11-27 17:03-0300\n"
+"PO-Revision-Date: 2020-11-27 17:04-0300\n"
 "Last-Translator: \n"
 "Language-Team: exclusion\n"
 "Language: ja\n"
@@ -14,6 +14,71 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: AudioSplitter.cpp:26
+#, c-format
+msgid "Audio splitter (division: \"%s\")"
+msgstr ""
+
+#: AudioSplitter.cpp:36
+msgid "Audio File"
+msgstr ""
+
+#: AudioSplitter.cpp:39
+msgid "You can drag and drop a .wav file into this window."
+msgstr ""
+
+#: AudioSplitter.cpp:44
+msgid "You can drag and drop a wav file into this window."
+msgstr ""
+
+#: AudioSplitter.cpp:47 AudioSplitter.cpp:62
+msgid "Browse..."
+msgstr ""
+
+#: AudioSplitter.cpp:53
+msgid "Output Directory"
+msgstr ""
+
+#: AudioSplitter.cpp:70
+msgid "Output sound file prefix:"
+msgstr ""
+
+#: AudioSplitter.cpp:76
+msgid "Should be the same as the BMS WAV definitions."
+msgstr ""
+
+#: AudioSplitter.cpp:82
+msgid "Slice Parameters"
+msgstr ""
+
+#: AudioSplitter.cpp:85
+msgid "BPM:"
+msgstr ""
+
+#: AudioSplitter.cpp:94
+msgid "Offset (MS):"
+msgstr ""
+
+#: AudioSplitter.cpp:108
+msgid "Split"
+msgstr ""
+
+#: AudioSplitter.cpp:109
+msgid "Close"
+msgstr "閉じる(&W)"
+
+#: AudioSplitter.cpp:137
+msgid "Error while splitting file"
+msgstr ""
+
+#: AudioSplitter.cpp:147
+msgid "Select audio file..."
+msgstr ""
+
+#: AudioSplitter.cpp:180
+msgid "Select audio output directory..."
+msgstr ""
 
 #: app.cpp:21
 msgid "Please choose language:"
@@ -37,227 +102,226 @@ msgstr ""
 msgid "%d"
 msgstr ""
 
-#: divedit.cpp:35
-msgid "Write MIDI File"
-msgstr "MIDIファイル出力"
-
-#: divedit.cpp:36
-msgid "Copy woslicer II Cutting Positions"
-msgstr "切断位置をコピー"
-
-#: divedit.cpp:37
-msgid "Open BMS WAV definitions..."
-msgstr "定義情報..."
-
-#: divedit.cpp:38
-msgid "Copy BMS Data to Clipboard"
-msgstr "BMSシーケンスをコピー"
-
-#: divedit.cpp:39
+#: divedit.cpp:77
 msgid "<"
 msgstr ""
 
-#: divedit.cpp:40
+#: divedit.cpp:78
 msgid ">"
 msgstr ""
 
-#: divedit.cpp:41
+#: divedit.cpp:79
 msgid "Transpose to..."
 msgstr "始番号.."
 
-#: divedit.cpp:106
+#: divedit.cpp:101
+msgid "Write MIDI File"
+msgstr "MIDIファイル出力"
+
+#: divedit.cpp:102
+msgid "Copy woslicer II Cutting Positions"
+msgstr "切断位置をコピー"
+
+#: divedit.cpp:103
+msgid "Open BMS WAV definitions..."
+msgstr "定義情報..."
+
+#: divedit.cpp:104
+msgid "Copy BMS Data to Clipboard"
+msgstr "BMSシーケンスをコピー"
+
+#: divedit.cpp:105
+msgid "Open built-in audio cutter"
+msgstr ""
+
+#: divedit.cpp:160
 msgid "MIDI files"
 msgstr "MIDIファイル出力"
 
-#: divedit.cpp:109 frame.cpp:160 project.cpp:14
+#: divedit.cpp:163 frame.cpp:160 project.cpp:14
 msgid "mid"
 msgstr ""
 
-#: divedit.cpp:118
+#: divedit.cpp:172
 msgid "Failed to export MIDI file."
 msgstr "MIDIファイルの書き出しに失敗しました。"
 
-#: divedit.cpp:129 divedit.cpp:140 divedit.cpp:280
+#: divedit.cpp:183 divedit.cpp:194 divedit.cpp:344
 msgid "Clipboard is not available."
 msgstr "クリップボードを利用できません."
 
-#: divedit.cpp:170
+#: divedit.cpp:224
 msgid "WAV definitions"
 msgstr "WAV定義情報"
 
-#: divedit.cpp:172 divview.cpp:222 midi_smfin.cpp:84
+#: divedit.cpp:226 divview.cpp:292 midi_smfin.cpp:98
 msgid "OK"
 msgstr ""
 
-#: divedit.cpp:252
+#: divedit.cpp:310
 #, c-format
 msgid "#WAV%s %s_%03d.wav\r\n"
 msgstr ""
 
-#: divedit.cpp:259 divedit.cpp:270
+#: divedit.cpp:320 divedit.cpp:332
 msgid "untitled"
 msgstr ""
 
-#: divedit.cpp:260
+#: divedit.cpp:321
 msgid "BMS WAV definitions"
 msgstr "WAV定義情報"
 
-#: divedit.cpp:261
+#: divedit.cpp:323
 msgid "Filename (&F):"
 msgstr "ファイル名(&F):"
 
-#: divedit.cpp:264
+#: divedit.cpp:327
 msgid "Copy to clipboard (&C)"
 msgstr "クリップボードにコピー(&C"
 
-#: divedit.cpp:265
+#: divedit.cpp:328
 msgid "Close (&W)"
 msgstr "閉じる(&W)"
 
-#: divedit.cpp:305
+#: divedit.cpp:369
 #, c-format
 msgid "Rename '%s' to"
 msgstr ""
 
-#: divedit.cpp:306
+#: divedit.cpp:370
 msgid "Rename division"
 msgstr ""
 
-#: division.cpp:330 division.cpp:339
+#: division.cpp:330 division.cpp:340
 msgid "BMSE ClipBoard Object Data Format\r\n"
 msgstr ""
 
-#: division.cpp:332
+#: division.cpp:333
 #, c-format
-msgid "011%08d1\r\n"
+msgid "011%08zu1\r\n"
 msgstr ""
 
-#: division.cpp:351
+#: division.cpp:352
 #, c-format
 msgid "1%02d%08d%d\r\n"
 msgstr ""
 
-#: divview.cpp:30
+#: divview.cpp:39
 msgid "New division..."
 msgstr "新規分割..."
 
-#: divview.cpp:93
+#: divview.cpp:103
 #, c-format
 msgid "Are you sure you want to delete %s?"
 msgstr "%sを削除してもよろしいですか?"
 
-#: divview.cpp:188
+#: divview.cpp:200
 msgid "Division settings"
 msgstr "分割設定"
 
-#: divview.cpp:191
+#: divview.cpp:203
 msgid "None"
 msgstr "なし"
 
-#: divview.cpp:192
+#: divview.cpp:204
 msgid "nn/gate/vel"
 msgstr ""
 
-#: divview.cpp:193
+#: divview.cpp:205
 msgid "nn/vel/gate"
 msgstr ""
 
-#: divview.cpp:194
+#: divview.cpp:206
 msgid "gate/nn/vel"
 msgstr ""
 
-#: divview.cpp:195
+#: divview.cpp:207
 msgid "gate/vel/nn"
 msgstr ""
 
-#: divview.cpp:196
+#: divview.cpp:208
 msgid "vel/nn/gate"
 msgstr ""
 
-#: divview.cpp:197
+#: divview.cpp:209
 msgid "vel/gate/nn"
 msgstr ""
 
-#: divview.cpp:199
+#: divview.cpp:217
 msgid "Name (&N):"
 msgstr "分割名(&N):"
 
-#: divview.cpp:201
+#: divview.cpp:225
 msgid "MIDI settings"
 msgstr "MIDI設定"
 
-#: divview.cpp:202
+#: divview.cpp:228
 msgid "Leave MIDI unaltered (&C)"
 msgstr "元のシーケンスをそのまま使用する(&C)"
 
-#: divview.cpp:203
+#: divview.cpp:234
 msgid "Leading silence (&H):"
 msgstr "頭の余白(&H):"
 
-#: divview.cpp:204 divview.cpp:206 divview.cpp:211 divview.cpp:221
+#: divview.cpp:235 divview.cpp:237 divview.cpp:257 divview.cpp:279
 #, c-format
 msgid "%f"
 msgstr ""
 
-#: divview.cpp:205
+#: divview.cpp:236
 msgid "Min. interval gap (&I):"
 msgstr "最小間隔(&I):"
 
-#: divview.cpp:207
+#: divview.cpp:238
 msgid "Sorting method (&S):"
 msgstr "ソート(&S):"
 
-#: divview.cpp:209
+#: divview.cpp:250
 msgid "Minimum difference in:"
 msgstr "値の差が下記以下のノートを同一視する:"
 
-#: divview.cpp:210
+#: divview.cpp:256
 msgid " Length (&G):"
 msgstr " - 長さ(&G):"
 
-#: divview.cpp:212
+#: divview.cpp:258
 msgid " Velocity (&V):"
 msgstr " - ベロシティ(&V):"
 
-#: divview.cpp:213
+#: divview.cpp:259
 #, c-format
 msgid "%zu"
 msgstr ""
 
-#: divview.cpp:214
+#: divview.cpp:267
 msgid "Definition settings"
 msgstr "定義設定"
 
-#: divview.cpp:216
+#: divview.cpp:274
 msgid "Use base-36 range(00-ZZ) (&Z)"
 msgstr "ZZ定義を有効にする(&Z)"
 
-#: divview.cpp:217
+#: divview.cpp:275
 msgid "Use overloading (&M)"
 msgstr "多重定義を使用する(&M)"
 
-#: divview.cpp:218
+#: divview.cpp:276
 msgid "Starting BMS Index (&D):"
 msgstr "定義の開始番号(&D):"
 
-#: divview.cpp:220
+#: divview.cpp:278
 msgid "Overloading Interval (&L):"
 msgstr "多重定義の間隔(&L):"
 
-#: divview.cpp:223
+#: divview.cpp:293
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: divview.cpp:274
-#, c-format
-msgid "division %zu"
-msgstr ""
-
-#: divview.h:34
+#: divview.h:37
 msgid "DivisionsEditor"
 msgstr ""
 
-#: divview.h:73
+#: divview.h:78
 msgid "DivisionsView"
 msgstr ""
 
@@ -333,7 +397,7 @@ msgstr "分割(&D)"
 msgid "Help (&H)"
 msgstr "ヘルプ(&H)"
 
-#: frame.cpp:136 frame.cpp:234
+#: frame.cpp:136 frame.cpp:240
 msgid "Couldn't open file:\r\n"
 msgstr "ファイルを開けません:\n"
 
@@ -343,38 +407,38 @@ msgstr "元となるMIDIファイルを選択してください"
 
 #: frame.cpp:170 frame.cpp:183
 msgid "Couldn't open file"
-msgstr "ファイルを開けません。"
+msgstr "ファイルを開けません"
 
 #: frame.cpp:178
 msgid "Open project file"
 msgstr "プロジェクトファイルを開く"
 
-#: frame.cpp:263
+#: frame.cpp:269
 msgid "Save project as"
 msgstr "プロジェクトを名前を付けて保存"
 
-#: frame.cpp:271
+#: frame.cpp:277
 msgid "The project has been modified. Do you want to save?"
 msgstr "プロジェクトは変更されています。保存しますか?"
 
-#: frame.cpp:287
+#: frame.cpp:293
 #, c-format
 msgid "source: %zun"
 msgstr ""
 
-#: frame.cpp:315
+#: frame.cpp:321
 msgid "* - "
 msgstr ""
 
-#: frame.cpp:316
+#: frame.cpp:322
 msgid " - "
 msgstr ""
 
-#: frame.cpp:317
+#: frame.cpp:323
 msgid "New project* - "
 msgstr "新規プロジェクト* - "
 
-#: frame.cpp:330
+#: frame.cpp:336
 #, c-format
 msgid "%s: %zun/%zud"
 msgstr ""
@@ -437,27 +501,22 @@ msgstr ""
 msgid "Note#%d ( %s ) gate:%d/%d vel:%d"
 msgstr ""
 
-#: midi_smfin.cpp:58
+#: midi_smfin.cpp:53
 msgid "MIDI file import settings"
 msgstr "SMF読み込み設定"
 
-#: midi_smfin.cpp:70
+#: midi_smfin.cpp:65
 #, c-format
 msgid "%04X: %s"
 msgstr ""
 
-#: midi_smfin.cpp:73
+#: midi_smfin.cpp:74
 msgid "Tracks (&T):"
 msgstr "トラック(&T):"
 
-#: midi_smfin.cpp:77
+#: midi_smfin.cpp:86
 msgid "Channels (&C):"
 msgstr "\"チャンネル(&C):"
-
-#: midi_smfin.cpp:80
-#, c-format
-msgid "%02X"
-msgstr ""
 
 #: project.cpp:14
 msgid "midi"
@@ -469,4 +528,26 @@ msgstr ""
 
 #: srcview.h:25
 msgid "SourceView"
+msgstr ""
+
+#: wavsplit.cpp:20
+#, c-format
+msgid "Couldn't read input audio file '%s'"
+msgstr ""
+
+#: wavsplit.cpp:29
+msgid "Output path is not a directory"
+msgstr ""
+
+#: wavsplit.cpp:32
+msgid "Output path does not exist"
+msgstr ""
+
+#: wavsplit.cpp:35
+msgid "Output path is not writeable"
+msgstr ""
+
+#: wavsplit.cpp:58
+#, c-format
+msgid "Couldn't open %s for output."
 msgstr ""

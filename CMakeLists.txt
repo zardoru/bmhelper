@@ -14,6 +14,7 @@ include_directories(${LIBSNDFILE_INCLUDE_DIRS})
 add_executable(bmhelper WIN32
         src/app.cpp
         src/app.h
+        src/bmhelper.rc
         src/common.h
         src/Configuration.cpp
         src/defview.cpp

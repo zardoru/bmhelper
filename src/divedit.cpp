@@ -103,11 +103,11 @@ DivisionEditor::DivisionEditor(FrameWindow *_frame, wxWindow *parent, wxWindowID
     def_clipboard = new wxButton(right_panel, ID_DefClipboard, _("Open BMS WAV definitions..."));
     bms_clipboard = new wxButton(right_panel, ID_BmsClipboard, _("Copy BMS Data to Clipboard"));
     open_splitter = new wxButton(right_panel, ID_OpenSplitter, _("Open built-in audio cutter"));
-    right_panel_sizer->Add(smf_output, 1, wxEXPAND);
+    right_panel_sizer->Add(smf_output, 2, wxEXPAND);
     right_panel_sizer->Add(wos_clipboard, 1, wxEXPAND);
-    right_panel_sizer->Add(def_clipboard, 1, wxEXPAND);
-    right_panel_sizer->Add(bms_clipboard, 1, wxEXPAND);
     right_panel_sizer->Add(open_splitter, 1, wxEXPAND);
+    right_panel_sizer->Add(def_clipboard, 2, wxEXPAND);
+    right_panel_sizer->Add(bms_clipboard, 2, wxEXPAND);
 
     horizontal_splitter->SplitVertically(left_panel, right_panel, -200);
     horizontal_splitter->SetSashGravity(1);

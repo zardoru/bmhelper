@@ -82,7 +82,7 @@ AudioSplitter::AudioSplitter(wxWindow *parent, const wxPoint &pos, const wxSize 
     auto panel_parameters_sizer = new wxStaticBoxSizer(wxHORIZONTAL, panel_parameters, _("Slice Parameters"));
     panel_parameters->SetSizer(panel_parameters_sizer);
 
-    auto lbl_bpm = new wxStaticText(panel_parameters, wxID_ANY, "BPM:");
+    auto lbl_bpm = new wxStaticText(panel_parameters, wxID_ANY, _("BPM:"));
     panel_parameters_sizer->Add(lbl_bpm, inner_flags);
 
     bpm_ctrl = new wxSpinCtrlDouble(panel_parameters);
@@ -91,7 +91,7 @@ AudioSplitter::AudioSplitter(wxWindow *parent, const wxPoint &pos, const wxSize 
     bpm_ctrl->SetValue(120);
     panel_parameters_sizer->Add(bpm_ctrl, inner_flags.Proportion(1));
 
-    auto lbl_offset = new wxStaticText(panel_parameters, wxID_ANY, "Offset (MS):");
+    auto lbl_offset = new wxStaticText(panel_parameters, wxID_ANY, _("Offset (MS):"));
     panel_parameters_sizer->Add(lbl_offset, inner_flags.Proportion(1));
 
     offset_ctrl = new wxSpinCtrlDouble(panel_parameters);
@@ -144,10 +144,10 @@ void AudioSplitter::OnBrowseInput(wxCommandEvent &evt) {
 
     auto dlg = new wxFileDialog(
             this,
-            "Select audio file...",
+            _("Select audio file..."),
             path.GetFullPath(),
             "",
-            "WAV files (*.wav)",
+            "WAV files (*.wav)|*.wav",
             wxFD_OPEN | wxFD_FILE_MUST_EXIST
     );
 

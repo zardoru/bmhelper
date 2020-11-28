@@ -66,7 +66,8 @@ public:
         }
 
         auto this_sizer = new wxBoxSizer(wxVERTICAL);
-        auto dlg_sizer = new wxGridSizer(2, 2, 10, 10);
+        auto dlg_sizer = new wxFlexGridSizer(2, 2, 10, 10);
+        dlg_sizer->SetFlexibleDirection(wxVERTICAL);
 
         this_sizer->Add(dlg_sizer, wxSizerFlags().Border(wxALL, 10));
 
@@ -80,7 +81,7 @@ public:
                                    track_choices.data(),
                                    wxCB_DROPDOWN | wxCB_READONLY);
         combo_trk->SetSelection(def);
-        dlg_sizer->Add(combo_trk);
+        dlg_sizer->Add(combo_trk, wxSizerFlags().Expand());
 
         auto channels_lbl = new wxStaticText(this, ID_Tracks_Text, _("Channels (&C):"));
         dlg_sizer->Add(channels_lbl);
