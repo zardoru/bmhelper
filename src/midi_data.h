@@ -22,8 +22,10 @@ public:
 	typedef std::pair<int, MidiParamsLane> MidiCCLanePair;
     wxString source_filename;
 
+protected:
+    int quantize;
+
 private:
-	int quantize;
 
 	MidiNotesLane note_events;	// �m�[�g
 	MidiParamsLane pb_events;	// �s�b�`�x���h

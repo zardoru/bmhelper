@@ -158,11 +158,14 @@ bool MidiData::load_smf(const wxString &filename) {
     if (!smf.load(filename)) {
         return false;
     }
+
+    init(); /* az: don't write on top of existing MIDI data in case of reload */
+
     quantize = smf.get_delta_time();
     size_t track_count = smf.get_track_count();
     if (!track_count) return false;
 
-    init(); /* az: don't write on top of existing MIDI data in case of reload */
+
     source_filename = filename;
 
     std::vector<MidiData_PreLoader> track_pre(track_count);

@@ -196,8 +196,11 @@ Division::Division(Project *_project, MidiData &src, const DivisionSetting &sett
 void Division::divide_from_data(MidiData &src, const DivisionSetting &setting, bool copy) {
     if (copy)
         src_data = src; // store a copy of the src data...
-
-    init(); /* clean ourselves up */
+    else {
+        auto q = quantize;
+        init(); /* clean ourselves up */
+        quantize = q;
+    }
 
     name = setting.name;
 
